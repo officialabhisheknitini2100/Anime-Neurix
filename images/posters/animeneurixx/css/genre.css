@@ -1,0 +1,138 @@
+/* =========================================================
+   ANIMEHUB · genre.css
+   Styles unique to genre.html (and reused lightly by
+   watchlist.html / favorites.html toolbars)
+   ========================================================= */
+
+.genre-banner { display: flex; align-items: flex-end; }
+.genre-banner-inner { position: relative; z-index: 2; padding: 0 var(--gutter) 38px; width: 100%; }
+.genre-eyebrow { color: var(--purple-soft); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: .8rem; margin-bottom: 10px; }
+.genre-name { font-size: clamp(2rem, 5vw, 3.4rem); }
+.genre-count { color: var(--text-secondary); margin-top: 8px; }
+
+.toolbar {
+  position: sticky; top: var(--nav-h); z-index: 60;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding: 16px var(--gutter); margin-bottom: 8px;
+  background: rgba(8,6,16,.78); backdrop-filter: blur(14px); border-bottom: 1px solid var(--glass-border);
+}
+.toolbar-search {
+  display: flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: var(--r-pill);
+  min-width: 220px; flex: 1; max-width: 320px;
+}
+.toolbar-search svg { width: 16px; height: 16px; color: var(--text-muted); flex-shrink: 0; }
+.toolbar-search input { width: 100%; font-size: .88rem; }
+
+.toolbar-controls { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.select-wrap { position: relative; }
+.select-wrap select {
+  appearance: none; padding: 10px 36px 10px 16px; border-radius: var(--r-pill); font-size: .85rem;
+  background: var(--glass-bg-strong); border: 1px solid var(--glass-border-strong); color: var(--text-primary);
+}
+.select-wrap::after {
+  content: "⌄"; position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+  color: var(--text-secondary); pointer-events: none;
+}
+
+.filter-drawer-trigger { align-items: center; gap: 8px; }
+
+.filter-badges { display: flex; gap: 8px; flex-wrap: wrap; padding: 0 var(--gutter) 16px; }
+.filter-badge {
+  display: flex; align-items: center; gap: 7px; padding: 6px 8px 6px 14px; border-radius: var(--r-pill);
+  background: var(--glass-bg-strong); border: 1px solid var(--purple-2); font-size: .78rem; color: var(--purple-soft);
+}
+.filter-badge button { width: 18px; height: 18px; border-radius: 50%; background: rgba(255,255,255,.1); display: grid; place-items: center; font-size: .7rem; }
+.clear-filters-btn { font-size: .78rem; color: var(--red-soft); text-decoration: underline; padding: 6px 4px; }
+
+.filter-drawer {
+  position: fixed; top: 0; right: 0; height: 100vh; width: min(340px, 88vw); z-index: 900;
+  background: var(--bg-elevated); border-left: 1px solid var(--glass-border);
+  transform: translateX(100%); transition: transform var(--med) var(--ease);
+  display: flex; flex-direction: column;
+}
+.filter-drawer.open { transform: translateX(0); }
+.filter-drawer-head { display: flex; align-items: center; justify-content: space-between; padding: 22px 22px 16px; border-bottom: 1px solid var(--glass-border); }
+.filter-drawer-body { padding: 18px 22px; overflow-y: auto; flex: 1; display: flex; flex-direction: column; gap: 22px; }
+.filter-group-title { font-size: .82rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-bottom: 12px; }
+.filter-options { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter-chip {
+  padding: 8px 14px; border-radius: var(--r-pill); font-size: .82rem;
+  background: var(--glass-bg-strong); border: 1px solid var(--glass-border); transition: var(--fast);
+}
+.filter-chip input { display: none; }
+.filter-chip.checked { background: var(--grad-brand); border-color: transparent; color: #fff; }
+.filter-drawer-foot { padding: 16px 22px 26px; border-top: 1px solid var(--glass-border); display: flex; gap: 10px; }
+.filter-drawer-foot .btn { flex: 1; justify-content: center; }
+
+.pagination { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 40px var(--gutter) 70px; flex-wrap: wrap; }
+.page-btn {
+  min-width: 40px; height: 40px; padding: 0 12px; border-radius: var(--r-pill); font-size: .88rem; font-weight: 600;
+  background: var(--glass-bg-strong); border: 1px solid var(--glass-border); display: grid; place-items: center; transition: var(--fast);
+}
+.page-btn:hover { border-color: var(--purple-2); }
+.page-btn.active { background: var(--grad-brand); border-color: transparent; box-shadow: 0 0 16px var(--purple-glow-soft); }
+.page-btn:disabled { opacity: .35; cursor: not-allowed; }
+.page-ellipsis { color: var(--text-muted); padding: 0 4px; }
+
+.fav-counter-pill {
+  display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: var(--r-pill);
+  background: var(--glass-bg-strong); border: 1px solid var(--glass-border-strong); font-size: .85rem;
+}
+.fav-counter-pill strong { color: var(--red-soft); font-size: 1rem; }
+
+/* ============ GENRE CINEMATIC OPENING OVERLAY ============ */
+/* Plays for ~1.8s every time a genre page loads, themed to the genre.
+   Lightweight: a handful of DOM nodes animated with pure CSS transforms. */
+#genre-cinematic {
+  position: fixed; inset: 0; z-index: 1000; background: var(--black);
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+  transition: opacity .5s ease, visibility .5s ease;
+}
+#genre-cinematic.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.cinematic-bg { position: absolute; inset: 0; background: radial-gradient(circle at 50% 50%, var(--cine-glow, var(--purple-glow-soft)), var(--black) 75%); }
+.cinematic-label {
+  position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeIn .5s ease .5s forwards;
+}
+.cinematic-icon { font-size: 2.6rem; filter: drop-shadow(0 0 16px var(--cine-glow, var(--purple-glow))); }
+.cinematic-name { font-family: var(--font-display); font-weight: 700; font-size: 1.3rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-primary); }
+
+/* Action: blades */
+.blade { position: absolute; width: 6px; height: 46vh; border-radius: 6px; top: 50%; left: 50%; margin: -23vh -3px; z-index: 2; }
+.blade.left  { background: linear-gradient(180deg, #fff, #cbd5e1 60%, transparent); animation: bladeInLeft .55s cubic-bezier(.3,.8,.4,1) forwards; box-shadow: 0 0 18px rgba(255,255,255,.7); }
+.blade.right { background: linear-gradient(180deg, transparent, #cbd5e1 40%, #fff); animation: bladeInRight .55s cubic-bezier(.3,.8,.4,1) forwards; box-shadow: 0 0 18px rgba(255,255,255,.7); }
+.clash-flash { position: absolute; top: 50%; left: 50%; width: 220px; height: 220px; margin: -110px; border-radius: 50%; background: radial-gradient(circle, #fff, var(--cine-glow, var(--red-accent)) 40%, transparent 70%); opacity: 0; animation: flashPulse .5s ease .5s 1; z-index: 2; }
+.spark { position: absolute; top: 50%; left: 50%; width: 5px; height: 5px; border-radius: 50%; background: #ffd166; box-shadow: 0 0 8px #ffd166; animation: sparkBurst .6s ease-out .55s forwards; opacity: 0; z-index: 2; }
+
+/* Fantasy: magic circle + runes */
+.magic-circle { position: absolute; width: 38vh; height: 38vh; border: 2px solid var(--cine-glow, var(--purple-soft)); border-radius: 50%; box-shadow: 0 0 40px var(--cine-glow, var(--purple-glow)); animation: circleAppear .9s cubic-bezier(.2,.8,.3,1) forwards; z-index: 2; }
+.magic-circle::before, .magic-circle::after { content: ""; position: absolute; inset: 14%; border: 1px solid var(--cine-glow, var(--purple-soft)); border-radius: 50%; opacity: .6; }
+.swirl { position: absolute; width: 50vh; height: 50vh; border-radius: 50%; background: radial-gradient(circle, var(--cine-glow, var(--purple-glow-soft)), transparent 70%); animation: swirlPulse 1.8s ease-in-out infinite; z-index: 1; }
+.rune { position: absolute; top: 50%; left: 50%; font-size: 1.4rem; color: var(--cine-glow, var(--purple-soft)); animation: runeFade 1.6s ease forwards; z-index: 2; }
+
+/* Romance: hearts */
+.heart-particle { position: absolute; bottom: 10%; font-size: 1.6rem; color: var(--cine-glow, var(--red-soft)); animation: heartFloat 2s ease-in forwards; z-index: 2; filter: drop-shadow(0 0 6px var(--cine-glow, var(--red-glow))); }
+
+/* Horror: fog + shadow */
+.fog-blob { position: absolute; width: 60vw; height: 40vh; border-radius: 50%; background: radial-gradient(ellipse, rgba(80,80,90,.5), transparent 70%); filter: blur(18px); animation: fogDrift 2.2s ease-in-out forwards; z-index: 1; }
+.shadow-sweep { position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(0,0,0,.6) 50%, transparent 70%); animation: shadowSweep 1.4s ease-in-out forwards; z-index: 2; }
+
+/* Sci-Fi: HUD corners + scanline */
+.hud-corner { position: absolute; width: 70px; height: 70px; border: 2px solid var(--cine-glow, #5ad8ff); opacity: 0; animation: hudCornerIn .4s ease forwards; box-shadow: 0 0 14px var(--cine-glow, #5ad8ff); z-index: 2; }
+.hud-corner.tl { top: 8%; left: 8%; border-right: none; border-bottom: none; }
+.hud-corner.tr { top: 8%; right: 8%; border-left: none; border-bottom: none; }
+.hud-corner.bl { bottom: 8%; left: 8%; border-right: none; border-top: none; }
+.hud-corner.br { bottom: 8%; right: 8%; border-left: none; border-top: none; }
+.hud-scanline { position: absolute; left: 0; right: 0; height: 2px; background: var(--cine-glow, #5ad8ff); box-shadow: 0 0 16px var(--cine-glow, #5ad8ff); animation: scanlineSweep 1.6s ease-in-out forwards; z-index: 2; }
+
+/* Generic fallback (any genre without a bespoke animation above) */
+.generic-glow { position: absolute; width: 50vh; height: 50vh; border-radius: 50%; background: radial-gradient(circle, var(--cine-glow, var(--purple-glow)), transparent 70%); animation: genericGlowIn 1.6s ease-out forwards; z-index: 1; }
+.generic-particle { position: absolute; width: 5px; height: 5px; border-radius: 50%; background: var(--cine-glow, var(--purple-soft)); animation: floatParticle 2s ease-out forwards; }
+
+@media (max-width: 600px) {
+  .blade { height: 36vh; }
+  .magic-circle, .swirl { width: 30vh; height: 30vh; }
+  .hud-corner { width: 48px; height: 48px; }
+  .cinematic-icon { font-size: 2rem; }
+  .cinematic-name { font-size: 1.05rem; }
+}

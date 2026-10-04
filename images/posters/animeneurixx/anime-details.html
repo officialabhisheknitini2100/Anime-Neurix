@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime NeuriX</title>
+<meta name="description" content="Anime details on Anime NeuriX.">
+<meta name="theme-color" content="#07050f">
+
+<meta property="og:type" content="video.tv_show">
+<meta property="og:title" content="Anime NeuriX">
+<meta property="og:description" content="Anime details on Anime NeuriX.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="images/logos/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/premium.css">
+</head>
+<body>
+<a href="#details-root" class="skip-link">Skip to content</a>
+
+<div id="loading-screen" aria-hidden="true">
+  <div class="loader-grid"></div>
+  <div class="loader-particles"></div>
+  <div class="loader-content">
+    <div class="loader-icon-brand">
+      <img class="loader-brand-img" src="images/logos/logo-vertical.png" alt="Anime NeuriX">
+    </div>
+    <div class="loader-bar-track" style="margin-top:20px;"><div class="loader-bar-fill"></div></div>
+    <div class="loader-text">Loading Anime Universe…</div>
+  </div>
+</div>
+
+<header class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-left">
+      <a href="index.html" class="brand"><img src="images/logos/logo-horizontal.png" alt="Anime NeuriX"></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="genre.html?genre=Action">Series</a>
+        <a href="genre.html?genre=Adventure">Movies</a>
+        <a href="genre.html?genre=Action&sort=trending">Trending</a>
+        <a href="genre.html?genre=Fantasy">Genres</a>
+        <a href="index.html#anime-news">Anime News</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" data-open-search aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <a class="icon-btn" href="watchlist.html" aria-label="My watchlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4V4z"/></svg>
+        <span class="badge-count js-wl-count" style="display:none;">0</span>
+      </a>
+      <a class="icon-btn hide-xs" href="favorites.html" aria-label="My favorites">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-10-9.3C.4 7.9 2.3 4 6.1 4 8.4 4 10.3 5.4 12 7.5 13.7 5.4 15.6 4 17.9 4c3.8 0 5.7 3.9 4.1 7.7C19.5 16.4 12 21 12 21z"/></svg>
+        <span class="badge-count js-fav-count" style="display:none;">0</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-scrim" id="nav-scrim"></div>
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+  <a href="index.html">Home</a>
+  <a href="genre.html?genre=Action">Series</a>
+  <a href="genre.html?genre=Adventure">Movies</a>
+  <a href="genre.html?genre=Action&sort=trending">Trending</a>
+  <a href="genre.html?genre=Fantasy">Genres</a>
+  <a href="index.html#anime-news">Anime News</a>
+  <a href="watchlist.html">My Watchlist</a>
+  <a href="favorites.html">My Favorites</a>
+</nav>
+
+<main id="details-root">
+
+  <section class="details-hero">
+    <img id="d-banner-img" src="" alt="">
+    <span class="hero-shade"></span>
+  </section>
+
+  <section class="details-body-grid">
+    <div class="details-poster gradient-border">
+      <img id="d-poster-img" src="" alt="">
+    </div>
+    <div class="details-info">
+      <h1 class="details-title" id="d-title">Loading…</h1>
+      <div class="details-meta-row">
+        <span class="pill rating-pill">★ <span id="d-rating"></span></span>
+        <span class="pill" id="d-type"></span>
+        <span class="pill" id="d-year"></span>
+        <span class="pill" id="d-status"></span>
+        <span class="pill" id="d-studio"></span>
+        <span class="pill" id="d-duration-or-eps"></span>
+      </div>
+      <div class="details-genre-row" id="d-genres"></div>
+      <p class="details-desc" id="d-desc"></p>
+      <div class="details-actions">
+        <button class="btn btn-glow btn-icon-only" id="d-play-btn" title="Jump to episodes" onclick="document.getElementById('d-seasons').scrollIntoView({behavior:'smooth'})">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg>
+        </button>
+        <button class="btn btn-ghost js-wl-btn" id="d-wl-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          <span>Add To Watchlist</span>
+        </button>
+        <button class="btn btn-ghost btn-icon-only js-fav-btn" id="d-fav-btn" aria-label="Toggle favorite">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.3C.4 7.9 2.3 4 6.1 4 8.4 4 10.3 5.4 12 7.5 13.7 5.4 15.6 4 17.9 4c3.8 0 5.7 3.9 4.1 7.7C19.5 16.4 12 21 12 21z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next Episode Countdown (hidden when the title has no nextEpisode data) -->
+  <div class="countdown-card glass gradient-border" id="countdown-card" style="display:none;">
+    <div class="countdown-label"><span class="pulse-dot"></span> <span id="countdown-ep-label">Next Episode</span></div>
+    <div class="countdown-timer" id="countdown-timer"></div>
+  </div>
+
+  <!-- Trailer -->
+  <section class="details-tabs-anchor" id="d-trailer-section">
+    <h2 class="subsection-title">🎞️ Trailer</h2>
+    <div class="trailer-frame-wrap">
+      <div class="trailer-frame-inner">
+        <iframe id="d-trailer-frame" src="" title="Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="trailer-fallback" id="d-trailer-fallback">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 5v14l11-7L8 5z"/></svg>
+          <span>Trailer coming soon — add a trailerYoutubeId in anime-data.json</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seasons & Episodes -->
+  <section class="details-tabs-anchor" id="d-seasons-section">
+    <h2 class="subsection-title">📺 Episodes</h2>
+    <div class="seasons-wrap" id="d-seasons"></div>
+  </section>
+
+  <!-- Screenshots -->
+  <section class="details-tabs-anchor">
+    <h2 class="subsection-title">🖼️ Screenshots</h2>
+    <div class="screenshot-gallery" id="d-screenshots"></div>
+  </section>
+
+  <!-- Characters -->
+  <section class="details-tabs-anchor">
+    <h2 class="subsection-title">👥 Characters & Voice Actors</h2>
+    <div class="character-grid" id="d-characters"></div>
+  </section>
+
+  <!-- Community Comments -->
+  <section class="details-tabs-anchor" id="comments-section">
+    <h2 class="subsection-title">💬 Anime Community Comments</h2>
+    <div class="comments-wrap">
+      <div class="comments-head">
+        <div class="comments-identity">Commenting as <strong id="comments-identity-name">Guest</strong></div>
+        <button class="btn btn-ghost btn-sm" id="change-nickname-btn">Change Nickname</button>
+      </div>
+      <div class="comment-form glass gradient-border" style="padding: 14px;">
+        <textarea id="comment-input" placeholder="Share your thoughts on this title…" maxlength="600"></textarea>
+        <button class="btn btn-glow" id="comment-post-btn">Post</button>
+      </div>
+      <div class="comment-list" id="comment-list"></div>
+    </div>
+  </section>
+
+  <!-- Recommended -->
+  <section class="section row-nav" id="d-recommended-section">
+    <div class="section-head"><h2 class="section-title">🎯 Recommended For You</h2></div>
+    <div class="row-scroller" id="d-recommended"></div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<button id="back-to-top" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<script src="js/anime-loader.js"></script>
+<script src="js/watchlist.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/continue-watching.js"></script>
+<script src="js/recommendations.js"></script>
+<script src="js/comments.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/search.js"></script>
+<script src="js/genre-loader.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

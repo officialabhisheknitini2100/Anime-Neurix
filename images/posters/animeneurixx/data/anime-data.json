@@ -1,0 +1,2051 @@
+{
+  "_instructions": {
+    "readMeFirst": "This whole website is powered by THIS file. You do not need to touch any .html, .css or .js file to manage content. Just edit the arrays below and save.",
+    "howToAddAnAnime": "Copy an existing object inside the 'anime' array whose category is 'anime'. Give it a unique 'id' (lowercase, no spaces, use dashes, e.g. 'my-new-show'). Fill in title, genres, releaseYear, studio, rating, description. Add at least one season with at least one episode.",
+    "howToAddAMovie": "Copy an existing object whose category is 'movie'. Movies do not use 'seasons' - they use a single top-level 'watchLink' and a 'duration' field instead (e.g. '1h 45m').",
+    "howToAddAGenre": "Add the new genre name as a string to the top-level 'genres' list, then add that same exact spelling to the 'genres' array of any anime/movie that belongs to it. Genre pages are generated automatically from this list - you never need to create a new genre page file.",
+    "howToAddASeason": "Inside an anime object, add a new object to its 'seasons' array with the next 'seasonNumber' and an 'episodes' array.",
+    "howToAddAnEpisode": "Inside a season, add a new object to 'episodes' with 'episodeNumber', 'title', 'thumbnail', 'duration', 'description' and 'watchLink'.",
+    "howToEditPosters": "Change the 'poster' field to the path of any image inside the /images/posters/ folder. Recommended size: 400x600px (2:3 ratio).",
+    "howToEditBanners": "Change the 'banner' field to the path of any image inside /images/banners/. Recommended size: 1600x640px (wide).",
+    "howToEditThumbnails": "Episode and screenshot thumbnails live in /images/thumbnails/. Recommended size: 480x270px (16:9).",
+    "howToEditWatchLinks": "IMPORTANT: 'watchLink' is just a generic outbound URL field (for example a Telegram post, a creator's own hosting page, or any link you are legally authorised to share). The site does NOT include or bundle any copyrighted video files - you are responsible for only ever linking to content you own or have the rights to distribute. Leave watchLink as an empty string (\"\") to show a 'Link coming soon' state instead of a dead link.",
+    "howToEditSocialLinks": "Edit the 'socialLinks' object below - every icon in the footer reads directly from these URLs, nothing is hardcoded in the HTML.",
+    "ratingScale": "rating is out of 10, one decimal place, e.g. 8.7",
+    "imagesNote": "All sample artwork in /images is procedurally generated placeholder art (gradients + text), not real studio posters, so the demo never ships with copyrighted artwork. Swap in your own licensed images before going live.",
+    "howToEditGenreMeta": "Each entry in 'genreMeta' controls a genre's tagline, icon and theme colors shown on genre tiles and used as a fallback theme on anime-details pages. Key must match a genre name exactly.",
+    "howToEditAnimeTheme": "Add an optional 'theme' object {name, themePrimary, themeSecondary, themeAccent} to any anime/movie to give its details page a unique color scheme. If omitted, the page falls back to its first genre's theme in genreMeta.",
+    "howToEditNextEpisode": "Add an optional 'nextEpisode' object {episodeLabel, airDateISO} to any Ongoing anime to show a live countdown on its details page. Use an ISO 8601 UTC date ending in 'Z'. Remove the field once you no longer want a countdown shown.",
+    "howToEditNews": "Edit the top-level 'news' array to control the homepage Anime News section. Each article needs id, title, date (YYYY-MM-DD), image, summary and an optional relatedAnimeId linking to a title in the catalog.",
+    "howToEditWatchLinksDemo": "Every episode/movie 'watchLink' currently points to demo-link.html (a built-in placeholder page) so the Watch buttons work out of the box. Replace these with your own licensed watch URLs whenever you're ready - see howToEditWatchLinks above for the rules on what you may link to."
+  },
+  "siteInfo": {
+    "name": "Anime NeuriX",
+    "tagline": "Beyond Streaming, Into Worlds.",
+    "logo": "images/logos/animehub-logo.svg"
+  },
+  "socialLinks": {
+    "instagram": "https://instagram.com/yourusername",
+    "telegram": "https://t.me/yourchannel",
+    "twitter": "https://twitter.com/yourusername",
+    "reddit": "https://reddit.com/r/yourcommunity",
+    "discord": "https://discord.gg/yourserver",
+    "youtube": "https://youtube.com/@yourchannel",
+    "tiktok": "https://tiktok.com/@yourusername"
+  },
+  "genres": [
+    "Action",
+    "Fantasy",
+    "Romance",
+    "Comedy",
+    "Sports",
+    "Horror",
+    "Drama",
+    "Adventure",
+    "Slice of Life",
+    "Supernatural",
+    "Sci-Fi",
+    "Mystery",
+    "Music",
+    "School"
+  ],
+  "studios": [
+    "A-1 Pictures",
+    "MAPPA",
+    "Wit Studio",
+    "Ufotable",
+    "Toei Animation",
+    "Bones",
+    "Madhouse",
+    "CloverWorks",
+    "Studio Ghibli",
+    "CoMix Wave Films",
+    "Kyoto Animation"
+  ],
+  "anime": [
+    {
+      "id": "solo-leveling",
+      "title": "Solo Leveling",
+      "category": "anime",
+      "poster": "images/posters/solo-leveling.jpg",
+      "banner": "images/banners/solo-leveling.jpg",
+      "rating": 8.9,
+      "genres": [
+        "Action",
+        "Fantasy",
+        "Adventure"
+      ],
+      "releaseYear": 2024,
+      "status": "Ongoing",
+      "studio": "A-1 Pictures",
+      "totalSeasons": 2,
+      "episodeCount": 6,
+      "popularity": 98,
+      "views": 5200000,
+      "favoritesCount": 3665,
+      "description": "A hunter ranked dead last gains a mysterious power to level up without limit, and starts climbing from the bottom of the food chain to the very top.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/solo-leveling-shot-1.jpg",
+        "images/thumbnails/solo-leveling-shot-2.jpg",
+        "images/thumbnails/solo-leveling-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Kael Lang",
+          "role": "Protagonist",
+          "voiceActor": "Sumi Hara",
+          "avatar": "images/thumbnails/kael-lang.png"
+        },
+        {
+          "name": "Kaito Ishida",
+          "role": "Mentor",
+          "voiceActor": "Daiki Ogawa",
+          "avatar": "images/thumbnails/kaito-ishida.png"
+        },
+        {
+          "name": "Aria Tanaka",
+          "role": "Ally",
+          "voiceActor": "Aiko Fujii",
+          "avatar": "images/thumbnails/aria-tanaka.png"
+        },
+        {
+          "name": "Ren Kuro",
+          "role": "Protagonist",
+          "voiceActor": "Nana Kobayashi",
+          "avatar": "images/thumbnails/ren-kuro.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/solo-leveling-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of Solo Leveling. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Solo%20Leveling&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/solo-leveling-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of Solo Leveling. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Solo%20Leveling&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/solo-leveling-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of Solo Leveling. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Solo%20Leveling&season=1&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 2,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/solo-leveling-s2e1.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 1 of Solo Leveling. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Solo%20Leveling&season=2&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/solo-leveling-s2e2.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 2 of Solo Leveling. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Solo%20Leveling&season=2&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/solo-leveling-s2e3.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 3 of Solo Leveling. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Solo%20Leveling&season=2&episode=3"
+            }
+          ]
+        }
+      ],
+      "editorsPick": false,
+      "theme": {
+        "name": "Purple Blue",
+        "themePrimary": "#7a2af0",
+        "themeSecondary": "#0c1a4a",
+        "themeAccent": "#3ca0ff"
+      },
+      "nextEpisode": {
+        "episodeLabel": "Episode 13",
+        "airDateISO": "2026-06-29T20:10:51Z"
+      }
+    },
+    {
+      "id": "jujutsu-kaisen",
+      "title": "Jujutsu Kaisen",
+      "category": "anime",
+      "poster": "images/posters/jujutsu-kaisen.jpg",
+      "banner": "images/banners/jujutsu-kaisen.jpg",
+      "rating": 8.7,
+      "genres": [
+        "Action",
+        "Supernatural",
+        "Horror",
+        "Mystery"
+      ],
+      "releaseYear": 2020,
+      "status": "Ongoing",
+      "studio": "MAPPA",
+      "totalSeasons": 2,
+      "episodeCount": 6,
+      "popularity": 96,
+      "views": 4900000,
+      "favoritesCount": 3590,
+      "description": "A high schooler swallows a cursed talisman to save his friends and is pulled into a hidden world where exorcists battle monstrous curses born from human emotion.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/jujutsu-kaisen-shot-1.jpg",
+        "images/thumbnails/jujutsu-kaisen-shot-2.jpg",
+        "images/thumbnails/jujutsu-kaisen-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Nox Volkov",
+          "role": "Rival",
+          "voiceActor": "Takeshi Fujii",
+          "avatar": "images/thumbnails/nox-volkov.png"
+        },
+        {
+          "name": "Jin Volkov",
+          "role": "Protagonist",
+          "voiceActor": "Aiko Kobayashi",
+          "avatar": "images/thumbnails/jin-volkov.png"
+        },
+        {
+          "name": "Hiro Kuro",
+          "role": "Antagonist",
+          "voiceActor": "Mei Ogawa",
+          "avatar": "images/thumbnails/hiro-kuro.png"
+        },
+        {
+          "name": "Ren Lang",
+          "role": "Mentor",
+          "voiceActor": "Aiko Hara",
+          "avatar": "images/thumbnails/ren-lang.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/jujutsu-kaisen-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of Jujutsu Kaisen. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Jujutsu%20Kaisen&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/jujutsu-kaisen-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of Jujutsu Kaisen. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Jujutsu%20Kaisen&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/jujutsu-kaisen-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of Jujutsu Kaisen. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Jujutsu%20Kaisen&season=1&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 2,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/jujutsu-kaisen-s2e1.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 1 of Jujutsu Kaisen. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Jujutsu%20Kaisen&season=2&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/jujutsu-kaisen-s2e2.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 2 of Jujutsu Kaisen. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Jujutsu%20Kaisen&season=2&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/jujutsu-kaisen-s2e3.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 3 of Jujutsu Kaisen. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Jujutsu%20Kaisen&season=2&episode=3"
+            }
+          ]
+        }
+      ],
+      "editorsPick": false,
+      "theme": {
+        "name": "Cursed Indigo",
+        "themePrimary": "#5a1fb0",
+        "themeSecondary": "#0a0a18",
+        "themeAccent": "#7a3cff"
+      },
+      "nextEpisode": {
+        "episodeLabel": "Episode 25",
+        "airDateISO": "2026-06-27T12:35:51Z"
+      }
+    },
+    {
+      "id": "attack-on-titan",
+      "title": "Attack on Titan",
+      "category": "anime",
+      "poster": "images/posters/attack-on-titan.jpg",
+      "banner": "images/banners/attack-on-titan.jpg",
+      "rating": 9.1,
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy"
+      ],
+      "releaseYear": 2013,
+      "status": "Completed",
+      "studio": "Wit Studio",
+      "totalSeasons": 4,
+      "episodeCount": 12,
+      "popularity": 99,
+      "views": 6800000,
+      "favoritesCount": 3702,
+      "description": "Humanity hides behind massive walls to survive against man-eating Titans, until one young soldier's rage uncovers the truth about the world outside.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/attack-on-titan-shot-1.jpg",
+        "images/thumbnails/attack-on-titan-shot-2.jpg",
+        "images/thumbnails/attack-on-titan-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Aria Arata",
+          "role": "Ally",
+          "voiceActor": "Daiki Hara",
+          "avatar": "images/thumbnails/aria-arata.png"
+        },
+        {
+          "name": "Mira Sato",
+          "role": "Mentor",
+          "voiceActor": "Aiko Nakamura",
+          "avatar": "images/thumbnails/mira-sato.png"
+        },
+        {
+          "name": "Hiro Ishida",
+          "role": "Protagonist",
+          "voiceActor": "Takeshi Nakamura",
+          "avatar": "images/thumbnails/hiro-ishida.png"
+        },
+        {
+          "name": "Mira Volkov",
+          "role": "Ally",
+          "voiceActor": "Sumi Ogawa",
+          "avatar": "images/thumbnails/mira-volkov.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/attack-on-titan-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/attack-on-titan-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/attack-on-titan-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=1&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 2,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/attack-on-titan-s2e1.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 1 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=2&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/attack-on-titan-s2e2.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 2 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=2&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/attack-on-titan-s2e3.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 3 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=2&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 3,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/attack-on-titan-s3e1.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 1 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=3&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/attack-on-titan-s3e2.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 2 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=3&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/attack-on-titan-s3e3.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 3 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=3&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 4,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/attack-on-titan-s4e1.jpg",
+              "duration": "23m",
+              "description": "Season 4, Episode 1 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=4&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/attack-on-titan-s4e2.jpg",
+              "duration": "23m",
+              "description": "Season 4, Episode 2 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=4&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/attack-on-titan-s4e3.jpg",
+              "duration": "23m",
+              "description": "Season 4, Episode 3 of Attack on Titan. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Attack%20on%20Titan&season=4&episode=3"
+            }
+          ]
+        }
+      ],
+      "editorsPick": false,
+      "theme": {
+        "name": "Dark Red",
+        "themePrimary": "#b3122a",
+        "themeSecondary": "#1a0508",
+        "themeAccent": "#ff3b3b"
+      }
+    },
+    {
+      "id": "demon-slayer",
+      "title": "Demon Slayer",
+      "category": "anime",
+      "poster": "images/posters/demon-slayer.jpg",
+      "banner": "images/banners/demon-slayer.jpg",
+      "rating": 8.8,
+      "genres": [
+        "Action",
+        "Fantasy",
+        "Adventure"
+      ],
+      "releaseYear": 2019,
+      "status": "Ongoing",
+      "studio": "Ufotable",
+      "totalSeasons": 4,
+      "episodeCount": 12,
+      "popularity": 97,
+      "views": 6100000,
+      "favoritesCount": 3627,
+      "description": "After his family is slaughtered by a demon, a boy joins an order of swordsmen hunting demons across Japan while searching for a cure for his transformed sister.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/demon-slayer-shot-1.jpg",
+        "images/thumbnails/demon-slayer-shot-2.jpg",
+        "images/thumbnails/demon-slayer-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Nox Kuro",
+          "role": "Mentor",
+          "voiceActor": "Ryo Yamashita",
+          "avatar": "images/thumbnails/nox-kuro.png"
+        },
+        {
+          "name": "Mira Arata",
+          "role": "Antagonist",
+          "voiceActor": "Shun Kobayashi",
+          "avatar": "images/thumbnails/mira-arata.png"
+        },
+        {
+          "name": "Sora Sato",
+          "role": "Love Interest",
+          "voiceActor": "Ryo Ogawa",
+          "avatar": "images/thumbnails/sora-sato.png"
+        },
+        {
+          "name": "Aria Sato",
+          "role": "Protagonist",
+          "voiceActor": "Mei Ogawa",
+          "avatar": "images/thumbnails/aria-sato.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/demon-slayer-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/demon-slayer-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/demon-slayer-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=1&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 2,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/demon-slayer-s2e1.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 1 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=2&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/demon-slayer-s2e2.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 2 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=2&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/demon-slayer-s2e3.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 3 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=2&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 3,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/demon-slayer-s3e1.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 1 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=3&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/demon-slayer-s3e2.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 2 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=3&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/demon-slayer-s3e3.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 3 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=3&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 4,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/demon-slayer-s4e1.jpg",
+              "duration": "23m",
+              "description": "Season 4, Episode 1 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=4&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/demon-slayer-s4e2.jpg",
+              "duration": "23m",
+              "description": "Season 4, Episode 2 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=4&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/demon-slayer-s4e3.jpg",
+              "duration": "23m",
+              "description": "Season 4, Episode 3 of Demon Slayer. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Demon%20Slayer&season=4&episode=3"
+            }
+          ]
+        }
+      ],
+      "editorsPick": false,
+      "theme": {
+        "name": "Red Black",
+        "themePrimary": "#d6172f",
+        "themeSecondary": "#0a0a0c",
+        "themeAccent": "#ff5a3c"
+      },
+      "nextEpisode": {
+        "episodeLabel": "Episode 9",
+        "airDateISO": "2026-06-26T15:00:51Z"
+      }
+    },
+    {
+      "id": "one-piece",
+      "title": "One Piece",
+      "category": "anime",
+      "poster": "images/posters/one-piece.jpg",
+      "banner": "images/banners/one-piece.jpg",
+      "rating": 8.7,
+      "genres": [
+        "Action",
+        "Adventure",
+        "Comedy"
+      ],
+      "releaseYear": 1999,
+      "status": "Ongoing",
+      "studio": "Toei Animation",
+      "totalSeasons": 3,
+      "episodeCount": 9,
+      "popularity": 95,
+      "views": 7300000,
+      "favoritesCount": 3553,
+      "description": "A rubber-bodied teenager sets sail with a ragtag crew to find the legendary treasure One Piece and become King of the Pirates.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/one-piece-shot-1.jpg",
+        "images/thumbnails/one-piece-shot-2.jpg",
+        "images/thumbnails/one-piece-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Nox Tanaka",
+          "role": "Mentor",
+          "voiceActor": "Aiko Nakamura",
+          "avatar": "images/thumbnails/nox-tanaka.png"
+        },
+        {
+          "name": "Aria Reyes",
+          "role": "Mentor",
+          "voiceActor": "Aiko Fujii",
+          "avatar": "images/thumbnails/aria-reyes.png"
+        },
+        {
+          "name": "Mira Sato",
+          "role": "Protagonist",
+          "voiceActor": "Mei Kobayashi",
+          "avatar": "images/thumbnails/mira-sato.png"
+        },
+        {
+          "name": "Sora Kuro",
+          "role": "Antagonist",
+          "voiceActor": "Takeshi Yamashita",
+          "avatar": "images/thumbnails/sora-kuro.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/one-piece-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of One Piece. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=One%20Piece&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/one-piece-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of One Piece. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=One%20Piece&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/one-piece-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of One Piece. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=One%20Piece&season=1&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 2,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/one-piece-s2e1.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 1 of One Piece. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=One%20Piece&season=2&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/one-piece-s2e2.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 2 of One Piece. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=One%20Piece&season=2&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/one-piece-s2e3.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 3 of One Piece. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=One%20Piece&season=2&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 3,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/one-piece-s3e1.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 1 of One Piece. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=One%20Piece&season=3&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/one-piece-s3e2.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 2 of One Piece. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=One%20Piece&season=3&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/one-piece-s3e3.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 3 of One Piece. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=One%20Piece&season=3&episode=3"
+            }
+          ]
+        }
+      ],
+      "editorsPick": false,
+      "theme": {
+        "name": "Pirate Gold",
+        "themePrimary": "#e0a23c",
+        "themeSecondary": "#1c3c5c",
+        "themeAccent": "#ffd166"
+      },
+      "nextEpisode": {
+        "episodeLabel": "Episode 1090",
+        "airDateISO": "2026-06-26T03:50:51Z"
+      }
+    },
+    {
+      "id": "my-hero-academia",
+      "title": "My Hero Academia",
+      "category": "anime",
+      "poster": "images/posters/my-hero-academia.jpg",
+      "banner": "images/banners/my-hero-academia.jpg",
+      "rating": 8.2,
+      "genres": [
+        "Action",
+        "Comedy",
+        "School",
+        "Sci-Fi"
+      ],
+      "releaseYear": 2016,
+      "status": "Ongoing",
+      "studio": "Bones",
+      "totalSeasons": 3,
+      "episodeCount": 9,
+      "popularity": 90,
+      "views": 4100000,
+      "favoritesCount": 3366,
+      "description": "In a world where almost everyone has a superpower, a quirkless boy enrolls in the country's top hero academy after inheriting the power of the world's greatest hero.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/my-hero-academia-shot-1.jpg",
+        "images/thumbnails/my-hero-academia-shot-2.jpg",
+        "images/thumbnails/my-hero-academia-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Hiro Tanaka",
+          "role": "Mentor",
+          "voiceActor": "Nana Ogawa",
+          "avatar": "images/thumbnails/hiro-tanaka.png"
+        },
+        {
+          "name": "Sora Arata",
+          "role": "Love Interest",
+          "voiceActor": "Daiki Nakamura",
+          "avatar": "images/thumbnails/sora-arata.png"
+        },
+        {
+          "name": "Kael Arata",
+          "role": "Love Interest",
+          "voiceActor": "Sumi Nakamura",
+          "avatar": "images/thumbnails/kael-arata.png"
+        },
+        {
+          "name": "Ren Reyes",
+          "role": "Ally",
+          "voiceActor": "Aiko Yamashita",
+          "avatar": "images/thumbnails/ren-reyes.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/my-hero-academia-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of My Hero Academia. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=My%20Hero%20Academia&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/my-hero-academia-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of My Hero Academia. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=My%20Hero%20Academia&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/my-hero-academia-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of My Hero Academia. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=My%20Hero%20Academia&season=1&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 2,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/my-hero-academia-s2e1.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 1 of My Hero Academia. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=My%20Hero%20Academia&season=2&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/my-hero-academia-s2e2.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 2 of My Hero Academia. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=My%20Hero%20Academia&season=2&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/my-hero-academia-s2e3.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 3 of My Hero Academia. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=My%20Hero%20Academia&season=2&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 3,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/my-hero-academia-s3e1.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 1 of My Hero Academia. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=My%20Hero%20Academia&season=3&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/my-hero-academia-s3e2.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 2 of My Hero Academia. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=My%20Hero%20Academia&season=3&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/my-hero-academia-s3e3.jpg",
+              "duration": "23m",
+              "description": "Season 3, Episode 3 of My Hero Academia. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=My%20Hero%20Academia&season=3&episode=3"
+            }
+          ]
+        }
+      ],
+      "editorsPick": false
+    },
+    {
+      "id": "chainsaw-man",
+      "title": "Chainsaw Man",
+      "category": "anime",
+      "poster": "images/posters/chainsaw-man.jpg",
+      "banner": "images/banners/chainsaw-man.jpg",
+      "rating": 8.5,
+      "genres": [
+        "Action",
+        "Horror",
+        "Comedy"
+      ],
+      "releaseYear": 2022,
+      "status": "Ongoing",
+      "studio": "MAPPA",
+      "totalSeasons": 1,
+      "episodeCount": 4,
+      "popularity": 92,
+      "views": 3700000,
+      "favoritesCount": 3440,
+      "description": "A debt-ridden young man fuses with his pet devil and becomes a chainsaw-wielding devil hunter, chasing a normal life one bloody contract at a time.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/chainsaw-man-shot-1.jpg",
+        "images/thumbnails/chainsaw-man-shot-2.jpg",
+        "images/thumbnails/chainsaw-man-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Ren Arata",
+          "role": "Antagonist",
+          "voiceActor": "Takeshi Nakamura",
+          "avatar": "images/thumbnails/ren-arata.png"
+        },
+        {
+          "name": "Asuka Volkov",
+          "role": "Mentor",
+          "voiceActor": "Aiko Kobayashi",
+          "avatar": "images/thumbnails/asuka-volkov.png"
+        },
+        {
+          "name": "Lena Arata",
+          "role": "Mentor",
+          "voiceActor": "Nana Fujii",
+          "avatar": "images/thumbnails/lena-arata.png"
+        },
+        {
+          "name": "Yuki Volkov",
+          "role": "Antagonist",
+          "voiceActor": "Takeshi Fujii",
+          "avatar": "images/thumbnails/yuki-volkov.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/chainsaw-man-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of Chainsaw Man. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Chainsaw%20Man&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/chainsaw-man-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of Chainsaw Man. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Chainsaw%20Man&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/chainsaw-man-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of Chainsaw Man. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Chainsaw%20Man&season=1&episode=3"
+            },
+            {
+              "episodeNumber": 4,
+              "title": "Episode 4",
+              "thumbnail": "images/thumbnails/chainsaw-man-s1e4.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 4 of Chainsaw Man. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Chainsaw%20Man&season=1&episode=4"
+            }
+          ]
+        }
+      ],
+      "editorsPick": true,
+      "theme": {
+        "name": "Blood Orange",
+        "themePrimary": "#e0392f",
+        "themeSecondary": "#1c0b06",
+        "themeAccent": "#ff7a3c"
+      },
+      "nextEpisode": {
+        "episodeLabel": "Episode 14",
+        "airDateISO": "2026-07-02T07:55:51Z"
+      }
+    },
+    {
+      "id": "spy-x-family",
+      "title": "Spy x Family",
+      "category": "anime",
+      "poster": "images/posters/spy-x-family.jpg",
+      "banner": "images/banners/spy-x-family.jpg",
+      "rating": 8.6,
+      "genres": [
+        "Comedy",
+        "Action",
+        "Slice of Life"
+      ],
+      "releaseYear": 2022,
+      "status": "Ongoing",
+      "studio": "CloverWorks",
+      "totalSeasons": 2,
+      "episodeCount": 6,
+      "popularity": 93,
+      "views": 3900000,
+      "favoritesCount": 3478,
+      "description": "A spy, an assassin, and a telepath unknowingly marry and adopt each other to build a fake family, each hiding their true identity from the rest of the household.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/spy-x-family-shot-1.jpg",
+        "images/thumbnails/spy-x-family-shot-2.jpg",
+        "images/thumbnails/spy-x-family-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Aria Mizuki",
+          "role": "Mentor",
+          "voiceActor": "Sumi Kobayashi",
+          "avatar": "images/thumbnails/aria-mizuki.png"
+        },
+        {
+          "name": "Kael Reyes",
+          "role": "Ally",
+          "voiceActor": "Nana Yamashita",
+          "avatar": "images/thumbnails/kael-reyes.png"
+        },
+        {
+          "name": "Sora Kondo",
+          "role": "Ally",
+          "voiceActor": "Nana Hara",
+          "avatar": "images/thumbnails/sora-kondo.png"
+        },
+        {
+          "name": "Asuka Reyes",
+          "role": "Mentor",
+          "voiceActor": "Aiko Nakamura",
+          "avatar": "images/thumbnails/asuka-reyes.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/spy-x-family-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of Spy x Family. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Spy%20x%20Family&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/spy-x-family-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of Spy x Family. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Spy%20x%20Family&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/spy-x-family-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of Spy x Family. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Spy%20x%20Family&season=1&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 2,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/spy-x-family-s2e1.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 1 of Spy x Family. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Spy%20x%20Family&season=2&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/spy-x-family-s2e2.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 2 of Spy x Family. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Spy%20x%20Family&season=2&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/spy-x-family-s2e3.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 3 of Spy x Family. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Spy%20x%20Family&season=2&episode=3"
+            }
+          ]
+        }
+      ],
+      "editorsPick": false
+    },
+    {
+      "id": "frieren-beyond-journeys-end",
+      "title": "Frieren: Beyond Journey's End",
+      "category": "anime",
+      "poster": "images/posters/frieren-beyond-journeys-end.jpg",
+      "banner": "images/banners/frieren-beyond-journeys-end.jpg",
+      "rating": 9.0,
+      "genres": [
+        "Fantasy",
+        "Adventure",
+        "Drama"
+      ],
+      "releaseYear": 2023,
+      "status": "Ongoing",
+      "studio": "Madhouse",
+      "totalSeasons": 1,
+      "episodeCount": 4,
+      "popularity": 94,
+      "views": 3300000,
+      "favoritesCount": 3515,
+      "description": "After the hero's party defeats the demon king, the elven mage Frieren outlives her companions and slowly learns what it means to cherish a fleeting human life.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/frieren-beyond-journeys-end-shot-1.jpg",
+        "images/thumbnails/frieren-beyond-journeys-end-shot-2.jpg",
+        "images/thumbnails/frieren-beyond-journeys-end-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Kaito Mizuki",
+          "role": "Antagonist",
+          "voiceActor": "Aiko Hara",
+          "avatar": "images/thumbnails/kaito-mizuki.png"
+        },
+        {
+          "name": "Asuka Lang",
+          "role": "Antagonist",
+          "voiceActor": "Daiki Kobayashi",
+          "avatar": "images/thumbnails/asuka-lang.png"
+        },
+        {
+          "name": "Ren Mizuki",
+          "role": "Antagonist",
+          "voiceActor": "Takeshi Fujii",
+          "avatar": "images/thumbnails/ren-mizuki.png"
+        },
+        {
+          "name": "Yuki Tanaka",
+          "role": "Love Interest",
+          "voiceActor": "Aiko Kobayashi",
+          "avatar": "images/thumbnails/yuki-tanaka.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/frieren-beyond-journeys-end-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of Frieren: Beyond Journey's End. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/frieren-beyond-journeys-end-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of Frieren: Beyond Journey's End. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/frieren-beyond-journeys-end-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of Frieren: Beyond Journey's End. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=3"
+            },
+            {
+              "episodeNumber": 4,
+              "title": "Episode 4",
+              "thumbnail": "images/thumbnails/frieren-beyond-journeys-end-s1e4.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 4 of Frieren: Beyond Journey's End. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4"
+            }
+          ]
+        }
+      ],
+      "editorsPick": true
+    },
+    {
+      "id": "bocchi-the-rock!",
+      "title": "Bocchi the Rock!",
+      "category": "anime",
+      "poster": "images/posters/bocchi-the-rock!.jpg",
+      "banner": "images/banners/bocchi-the-rock!.jpg",
+      "rating": 8.6,
+      "genres": [
+        "Comedy",
+        "Slice of Life",
+        "Music"
+      ],
+      "releaseYear": 2022,
+      "status": "Completed",
+      "studio": "CloverWorks",
+      "totalSeasons": 1,
+      "episodeCount": 4,
+      "popularity": 85,
+      "views": 2100000,
+      "favoritesCount": 3179,
+      "description": "A painfully shy guitarist who can only express herself through music is dragged into a band by a chaotic drummer, and slowly finds her voice on stage.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/bocchi-the-rock!-shot-1.jpg",
+        "images/thumbnails/bocchi-the-rock!-shot-2.jpg",
+        "images/thumbnails/bocchi-the-rock!-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Jin Tanaka",
+          "role": "Love Interest",
+          "voiceActor": "Daiki Ogawa",
+          "avatar": "images/thumbnails/jin-tanaka.png"
+        },
+        {
+          "name": "Aria Lang",
+          "role": "Rival",
+          "voiceActor": "Ryo Fujii",
+          "avatar": "images/thumbnails/aria-lang.png"
+        },
+        {
+          "name": "Kael Arata",
+          "role": "Love Interest",
+          "voiceActor": "Sumi Nakamura",
+          "avatar": "images/thumbnails/kael-arata.png"
+        },
+        {
+          "name": "Asuka Kuro",
+          "role": "Mentor",
+          "voiceActor": "Takeshi Hara",
+          "avatar": "images/thumbnails/asuka-kuro.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/bocchi-the-rock!-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of Bocchi the Rock!. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Bocchi%20the%20Rock%21&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/bocchi-the-rock!-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of Bocchi the Rock!. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Bocchi%20the%20Rock%21&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/bocchi-the-rock!-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of Bocchi the Rock!. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Bocchi%20the%20Rock%21&season=1&episode=3"
+            },
+            {
+              "episodeNumber": 4,
+              "title": "Episode 4",
+              "thumbnail": "images/thumbnails/bocchi-the-rock!-s1e4.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 4 of Bocchi the Rock!. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Bocchi%20the%20Rock%21&season=1&episode=4"
+            }
+          ]
+        }
+      ],
+      "editorsPick": false
+    },
+    {
+      "id": "vinland-saga",
+      "title": "Vinland Saga",
+      "category": "anime",
+      "poster": "images/posters/vinland-saga.jpg",
+      "banner": "images/banners/vinland-saga.jpg",
+      "rating": 8.9,
+      "genres": [
+        "Action",
+        "Drama",
+        "Adventure"
+      ],
+      "releaseYear": 2019,
+      "status": "Ongoing",
+      "studio": "Wit Studio",
+      "totalSeasons": 2,
+      "episodeCount": 6,
+      "popularity": 88,
+      "views": 2600000,
+      "favoritesCount": 3291,
+      "description": "A young Viking raised for vengeance survives war, slavery, and loss only to question everything he believed about what makes a man strong.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/vinland-saga-shot-1.jpg",
+        "images/thumbnails/vinland-saga-shot-2.jpg",
+        "images/thumbnails/vinland-saga-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Lena Sato",
+          "role": "Ally",
+          "voiceActor": "Shun Ogawa",
+          "avatar": "images/thumbnails/lena-sato.png"
+        },
+        {
+          "name": "Ren Lang",
+          "role": "Love Interest",
+          "voiceActor": "Aiko Kobayashi",
+          "avatar": "images/thumbnails/ren-lang.png"
+        },
+        {
+          "name": "Mira Reyes",
+          "role": "Mentor",
+          "voiceActor": "Mei Kobayashi",
+          "avatar": "images/thumbnails/mira-reyes.png"
+        },
+        {
+          "name": "Hiro Kuro",
+          "role": "Protagonist",
+          "voiceActor": "Shun Nakamura",
+          "avatar": "images/thumbnails/hiro-kuro.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/vinland-saga-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of Vinland Saga. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Vinland%20Saga&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/vinland-saga-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of Vinland Saga. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Vinland%20Saga&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/vinland-saga-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of Vinland Saga. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Vinland%20Saga&season=1&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 2,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/vinland-saga-s2e1.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 1 of Vinland Saga. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Vinland%20Saga&season=2&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/vinland-saga-s2e2.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 2 of Vinland Saga. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Vinland%20Saga&season=2&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/vinland-saga-s2e3.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 3 of Vinland Saga. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Vinland%20Saga&season=2&episode=3"
+            }
+          ]
+        }
+      ],
+      "editorsPick": true
+    },
+    {
+      "id": "mushoku-tensei",
+      "title": "Mushoku Tensei",
+      "category": "anime",
+      "poster": "images/posters/mushoku-tensei.jpg",
+      "banner": "images/banners/mushoku-tensei.jpg",
+      "rating": 8.5,
+      "genres": [
+        "Fantasy",
+        "Adventure",
+        "Drama"
+      ],
+      "releaseYear": 2021,
+      "status": "Ongoing",
+      "studio": "Studio Bind",
+      "totalSeasons": 2,
+      "episodeCount": 6,
+      "popularity": 86,
+      "views": 2400000,
+      "favoritesCount": 3216,
+      "description": "A failed, friendless man dies in disgrace and wakes up as an infant in a magical world, determined to live this second chance without wasting a single day.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/mushoku-tensei-shot-1.jpg",
+        "images/thumbnails/mushoku-tensei-shot-2.jpg",
+        "images/thumbnails/mushoku-tensei-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Hiro Ishida",
+          "role": "Antagonist",
+          "voiceActor": "Shun Yamashita",
+          "avatar": "images/thumbnails/hiro-ishida.png"
+        },
+        {
+          "name": "Asuka Kondo",
+          "role": "Antagonist",
+          "voiceActor": "Sumi Hara",
+          "avatar": "images/thumbnails/asuka-kondo.png"
+        },
+        {
+          "name": "Sora Arata",
+          "role": "Protagonist",
+          "voiceActor": "Daiki Hara",
+          "avatar": "images/thumbnails/sora-arata.png"
+        },
+        {
+          "name": "Kael Kuro",
+          "role": "Mentor",
+          "voiceActor": "Ryo Ogawa",
+          "avatar": "images/thumbnails/kael-kuro.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/mushoku-tensei-s1e1.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 1 of Mushoku Tensei. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/mushoku-tensei-s1e2.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 2 of Mushoku Tensei. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/mushoku-tensei-s1e3.jpg",
+              "duration": "23m",
+              "description": "Season 1, Episode 3 of Mushoku Tensei. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3"
+            }
+          ]
+        },
+        {
+          "seasonNumber": 2,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Episode 1",
+              "thumbnail": "images/thumbnails/mushoku-tensei-s2e1.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 1 of Mushoku Tensei. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=2&episode=1"
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Episode 2",
+              "thumbnail": "images/thumbnails/mushoku-tensei-s2e2.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 2 of Mushoku Tensei. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=2&episode=2"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Episode 3",
+              "thumbnail": "images/thumbnails/mushoku-tensei-s2e3.jpg",
+              "duration": "23m",
+              "description": "Season 2, Episode 3 of Mushoku Tensei. Replace this with your own episode summary.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=2&episode=3"
+            }
+          ]
+        }
+      ],
+      "editorsPick": false
+    },
+    {
+      "id": "your-name",
+      "title": "Your Name",
+      "category": "movie",
+      "poster": "images/posters/your-name.jpg",
+      "banner": "images/banners/your-name.jpg",
+      "rating": 8.9,
+      "genres": [
+        "Romance",
+        "Drama",
+        "Fantasy"
+      ],
+      "releaseYear": 2016,
+      "status": "Completed",
+      "studio": "CoMix Wave Films",
+      "duration": "1h 46m",
+      "popularity": 95,
+      "views": 4400000,
+      "favoritesCount": 2764,
+      "description": "Two teenagers in different cities begin mysteriously swapping bodies in their dreams, and slowly realize their connection might be the only thing that can save a town from disaster.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/your-name-shot-1.jpg",
+        "images/thumbnails/your-name-shot-2.jpg",
+        "images/thumbnails/your-name-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Jin Reyes",
+          "role": "Protagonist",
+          "voiceActor": "Nana Ogawa",
+          "avatar": "images/thumbnails/jin-reyes.png"
+        },
+        {
+          "name": "Ren Mizuki",
+          "role": "Love Interest",
+          "voiceActor": "Daiki Kobayashi",
+          "avatar": "images/thumbnails/ren-mizuki.png"
+        },
+        {
+          "name": "Jin Tanaka",
+          "role": "Mentor",
+          "voiceActor": "Ryo Yamashita",
+          "avatar": "images/thumbnails/jin-tanaka.png"
+        }
+      ],
+      "watchLink": "demo-link.html?title=Your%20Name",
+      "editorsPick": false
+    },
+    {
+      "id": "spirited-away",
+      "title": "Spirited Away",
+      "category": "movie",
+      "poster": "images/posters/spirited-away.jpg",
+      "banner": "images/banners/spirited-away.jpg",
+      "rating": 9.2,
+      "genres": [
+        "Fantasy",
+        "Adventure",
+        "Family"
+      ],
+      "releaseYear": 2001,
+      "status": "Completed",
+      "studio": "Studio Ghibli",
+      "duration": "2h 5m",
+      "popularity": 97,
+      "views": 5100000,
+      "favoritesCount": 2822,
+      "description": "A sullen ten-year-old wanders into a bathhouse for spirits and must work off a curse placed on her parents before she loses her own name and self forever.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/spirited-away-shot-1.jpg",
+        "images/thumbnails/spirited-away-shot-2.jpg",
+        "images/thumbnails/spirited-away-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Asuka Arata",
+          "role": "Antagonist",
+          "voiceActor": "Mei Ogawa",
+          "avatar": "images/thumbnails/asuka-arata.png"
+        },
+        {
+          "name": "Nox Kuro",
+          "role": "Antagonist",
+          "voiceActor": "Mei Hara",
+          "avatar": "images/thumbnails/nox-kuro.png"
+        },
+        {
+          "name": "Nox Kondo",
+          "role": "Rival",
+          "voiceActor": "Sumi Ogawa",
+          "avatar": "images/thumbnails/nox-kondo.png"
+        }
+      ],
+      "watchLink": "demo-link.html?title=Spirited%20Away",
+      "editorsPick": true
+    },
+    {
+      "id": "weathering-with-you",
+      "title": "Weathering With You",
+      "category": "movie",
+      "poster": "images/posters/weathering-with-you.jpg",
+      "banner": "images/banners/weathering-with-you.jpg",
+      "rating": 8.6,
+      "genres": [
+        "Romance",
+        "Fantasy",
+        "Drama"
+      ],
+      "releaseYear": 2019,
+      "status": "Completed",
+      "studio": "CoMix Wave Films",
+      "duration": "1h 52m",
+      "popularity": 89,
+      "views": 2900000,
+      "favoritesCount": 2589,
+      "description": "A runaway boy in rain-soaked Tokyo meets a girl who can part the clouds with a wish, and learns that her gift comes with a cost neither of them expected.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/weathering-with-you-shot-1.jpg",
+        "images/thumbnails/weathering-with-you-shot-2.jpg",
+        "images/thumbnails/weathering-with-you-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Aria Arata",
+          "role": "Ally",
+          "voiceActor": "Takeshi Kobayashi",
+          "avatar": "images/thumbnails/aria-arata.png"
+        },
+        {
+          "name": "Kael Reyes",
+          "role": "Antagonist",
+          "voiceActor": "Ryo Nakamura",
+          "avatar": "images/thumbnails/kael-reyes.png"
+        },
+        {
+          "name": "Mira Volkov",
+          "role": "Antagonist",
+          "voiceActor": "Sumi Yamashita",
+          "avatar": "images/thumbnails/mira-volkov.png"
+        }
+      ],
+      "watchLink": "demo-link.html?title=Weathering%20With%20You",
+      "editorsPick": false
+    },
+    {
+      "id": "suzume",
+      "title": "Suzume",
+      "category": "movie",
+      "poster": "images/posters/suzume.jpg",
+      "banner": "images/banners/suzume.jpg",
+      "rating": 8.4,
+      "genres": [
+        "Fantasy",
+        "Adventure",
+        "Drama"
+      ],
+      "releaseYear": 2022,
+      "status": "Completed",
+      "studio": "CoMix Wave Films",
+      "duration": "2h 2m",
+      "popularity": 87,
+      "views": 2300000,
+      "favoritesCount": 2531,
+      "description": "A high schooler stumbles into a hidden door that unleashes disasters across Japan, and joins a mysterious stranger on a race to shut every one of them.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/suzume-shot-1.jpg",
+        "images/thumbnails/suzume-shot-2.jpg",
+        "images/thumbnails/suzume-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Mira Kuro",
+          "role": "Rival",
+          "voiceActor": "Nana Ogawa",
+          "avatar": "images/thumbnails/mira-kuro.png"
+        },
+        {
+          "name": "Jin Kondo",
+          "role": "Mentor",
+          "voiceActor": "Mei Yamashita",
+          "avatar": "images/thumbnails/jin-kondo.png"
+        },
+        {
+          "name": "Ren Kuro",
+          "role": "Mentor",
+          "voiceActor": "Daiki Ogawa",
+          "avatar": "images/thumbnails/ren-kuro.png"
+        }
+      ],
+      "watchLink": "demo-link.html?title=Suzume",
+      "editorsPick": true
+    },
+    {
+      "id": "a-silent-voice",
+      "title": "A Silent Voice",
+      "category": "movie",
+      "poster": "images/posters/a-silent-voice.jpg",
+      "banner": "images/banners/a-silent-voice.jpg",
+      "rating": 8.9,
+      "genres": [
+        "Drama",
+        "Romance",
+        "School"
+      ],
+      "releaseYear": 2016,
+      "status": "Completed",
+      "studio": "Kyoto Animation",
+      "duration": "2h 10m",
+      "popularity": 90,
+      "views": 2700000,
+      "favoritesCount": 2619,
+      "description": "Years after bullying a deaf classmate out of school, a withdrawn teenager sets out to make amends and confront the guilt that has isolated him ever since.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/a-silent-voice-shot-1.jpg",
+        "images/thumbnails/a-silent-voice-shot-2.jpg",
+        "images/thumbnails/a-silent-voice-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Nox Ishida",
+          "role": "Love Interest",
+          "voiceActor": "Takeshi Hara",
+          "avatar": "images/thumbnails/nox-ishida.png"
+        },
+        {
+          "name": "Kael Tanaka",
+          "role": "Rival",
+          "voiceActor": "Aiko Yamashita",
+          "avatar": "images/thumbnails/kael-tanaka.png"
+        },
+        {
+          "name": "Kael Arata",
+          "role": "Mentor",
+          "voiceActor": "Takeshi Yamashita",
+          "avatar": "images/thumbnails/kael-arata.png"
+        }
+      ],
+      "watchLink": "demo-link.html?title=A%20Silent%20Voice",
+      "editorsPick": true
+    },
+    {
+      "id": "jujutsu-kaisen-0",
+      "title": "Jujutsu Kaisen 0",
+      "category": "movie",
+      "poster": "images/posters/jujutsu-kaisen-0.jpg",
+      "banner": "images/banners/jujutsu-kaisen-0.jpg",
+      "rating": 8.5,
+      "genres": [
+        "Action",
+        "Supernatural"
+      ],
+      "releaseYear": 2021,
+      "status": "Completed",
+      "studio": "MAPPA",
+      "duration": "1h 45m",
+      "popularity": 88,
+      "views": 2500000,
+      "favoritesCount": 2560,
+      "description": "A boy haunted by the curse born from his own childhood promise enrolls at a school for exorcists, hoping to find a place where his power finally means something good.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/jujutsu-kaisen-0-shot-1.jpg",
+        "images/thumbnails/jujutsu-kaisen-0-shot-2.jpg",
+        "images/thumbnails/jujutsu-kaisen-0-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Lena Ishida",
+          "role": "Protagonist",
+          "voiceActor": "Takeshi Nakamura",
+          "avatar": "images/thumbnails/lena-ishida.png"
+        },
+        {
+          "name": "Ren Arata",
+          "role": "Antagonist",
+          "voiceActor": "Daiki Ogawa",
+          "avatar": "images/thumbnails/ren-arata.png"
+        },
+        {
+          "name": "Kael Volkov",
+          "role": "Antagonist",
+          "voiceActor": "Ryo Fujii",
+          "avatar": "images/thumbnails/kael-volkov.png"
+        }
+      ],
+      "watchLink": "demo-link.html?title=Jujutsu%20Kaisen%200",
+      "editorsPick": false
+    }
+  ],
+  "genreMeta": {
+    "Action": {
+      "tagline": "Epic Battles & Intense Adventures",
+      "icon": "\u2694\ufe0f",
+      "themePrimary": "#e0394a",
+      "themeSecondary": "#7a1620",
+      "themeAccent": "#ff5a3c"
+    },
+    "Fantasy": {
+      "tagline": "Magical Worlds Beyond Imagination",
+      "icon": "\ud83d\udd2e",
+      "themePrimary": "#8b2af0",
+      "themeSecondary": "#4b0f8a",
+      "themeAccent": "#c084fc"
+    },
+    "Romance": {
+      "tagline": "Heartwarming Love Stories",
+      "icon": "\ud83d\udc97",
+      "themePrimary": "#ff5fa2",
+      "themeSecondary": "#7a1f4a",
+      "themeAccent": "#ffa6cf"
+    },
+    "Comedy": {
+      "tagline": "Laughs, Fun & Unforgettable Moments",
+      "icon": "\ud83d\ude02",
+      "themePrimary": "#ffb13c",
+      "themeSecondary": "#7a4a10",
+      "themeAccent": "#ffd97a"
+    },
+    "Sports": {
+      "tagline": "Passion, Rivalry & Victory",
+      "icon": "\ud83c\udfc6",
+      "themePrimary": "#2fb6e0",
+      "themeSecondary": "#0c4a66",
+      "themeAccent": "#6fe0ff"
+    },
+    "Horror": {
+      "tagline": "Fear, Suspense & Dark Mysteries",
+      "icon": "\ud83e\ude78",
+      "themePrimary": "#c4122e",
+      "themeSecondary": "#350608",
+      "themeAccent": "#ff2a4a"
+    },
+    "Drama": {
+      "tagline": "Powerful Stories & Real Emotion",
+      "icon": "\ud83c\udfad",
+      "themePrimary": "#9333c2",
+      "themeSecondary": "#3a1050",
+      "themeAccent": "#cf8cff"
+    },
+    "Adventure": {
+      "tagline": "Explore New Worlds & Legends",
+      "icon": "\ud83e\udded",
+      "themePrimary": "#e2a23c",
+      "themeSecondary": "#5c3c0a",
+      "themeAccent": "#ffd166"
+    },
+    "Slice of Life": {
+      "tagline": "Quiet Moments & Everyday Magic",
+      "icon": "\ud83c\udf43",
+      "themePrimary": "#5fbf8f",
+      "themeSecondary": "#1d4a36",
+      "themeAccent": "#a6e8c8"
+    },
+    "Supernatural": {
+      "tagline": "Curses, Spirits & Hidden Powers",
+      "icon": "\ud83d\udc41\ufe0f",
+      "themePrimary": "#7a3cf0",
+      "themeSecondary": "#2a0f5c",
+      "themeAccent": "#b68cff"
+    },
+    "Sci-Fi": {
+      "tagline": "Future Technology & Cosmic Adventures",
+      "icon": "\ud83d\udef0\ufe0f",
+      "themePrimary": "#22c3d6",
+      "themeSecondary": "#0a3c47",
+      "themeAccent": "#7af2ff"
+    },
+    "Mystery": {
+      "tagline": "Secrets, Clues & Hidden Truths",
+      "icon": "\ud83d\udd75\ufe0f",
+      "themePrimary": "#5a64c4",
+      "themeSecondary": "#1f234a",
+      "themeAccent": "#9aa2ff"
+    },
+    "Music": {
+      "tagline": "Rhythm, Passion & Performance",
+      "icon": "\ud83c\udfb5",
+      "themePrimary": "#ff6fb0",
+      "themeSecondary": "#5c1f40",
+      "themeAccent": "#ffb3da"
+    },
+    "School": {
+      "tagline": "Friendship, Growth & First Chapters",
+      "icon": "\ud83d\udcda",
+      "themePrimary": "#4fa8e0",
+      "themeSecondary": "#163c5c",
+      "themeAccent": "#9ad4ff"
+    }
+  },
+  "news": [
+    {
+      "id": "news-1",
+      "title": "Solo Leveling Season 3 Announced",
+      "date": "2026-06-18",
+      "image": "images/banners/solo-leveling.jpg",
+      "summary": "A-1 Pictures confirms a third season is officially in production, with a teaser promising an even bigger scale than the Jeju Island arc.",
+      "relatedAnimeId": "solo-leveling"
+    },
+    {
+      "id": "news-2",
+      "title": "Demon Slayer Movie Update",
+      "date": "2026-06-12",
+      "image": "images/banners/demon-slayer.jpg",
+      "summary": "Ufotable shares new details on the upcoming film closing out the Infinity Castle arc, including a first look at key animation.",
+      "relatedAnimeId": "demon-slayer"
+    },
+    {
+      "id": "news-3",
+      "title": "One Piece New Arc Begins",
+      "date": "2026-06-08",
+      "image": "images/banners/one-piece.jpg",
+      "summary": "The Straw Hats set sail into a brand-new arc this week, picking up immediately after the events of Egghead Island.",
+      "relatedAnimeId": "one-piece"
+    },
+    {
+      "id": "news-4",
+      "title": "Jujutsu Kaisen Special Episode",
+      "date": "2026-06-02",
+      "image": "images/banners/jujutsu-kaisen.jpg",
+      "summary": "MAPPA announces a one-off special episode bridging the gap before the next major arc, airing alongside a remastered broadcast.",
+      "relatedAnimeId": "jujutsu-kaisen"
+    },
+    {
+      "id": "news-5",
+      "title": "Attack on Titan Anniversary Event",
+      "date": "2026-05-27",
+      "image": "images/banners/attack-on-titan.jpg",
+      "summary": "Studios and publishers celebrate the series' anniversary with a retrospective exhibition and a newly illustrated key visual.",
+      "relatedAnimeId": "attack-on-titan"
+    }
+  ]
+}

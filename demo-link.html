@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Watch Link · Anime NeuriX</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/png" href="images/logos/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/premium.css">
+<style>
+  body { display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 24px; }
+  .demo-card { max-width: 560px; padding: 44px 38px; text-align: center; border-radius: var(--r-lg); }
+  .demo-icon { width: 64px; height: 64px; margin: 0 auto 22px; border-radius: 50%; display: grid; place-items: center; background: var(--grad-brand); box-shadow: 0 0 30px var(--purple-glow); }
+  .demo-icon svg { width: 28px; height: 28px; color: #fff; }
+  .demo-card h1 { font-size: 1.5rem; margin-bottom: 10px; }
+  .demo-card p { color: var(--text-secondary); line-height: 1.7; margin-bottom: 8px; }
+  .demo-meta { display: inline-flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin: 18px 0 26px; }
+  .demo-meta span { padding: 6px 14px; border-radius: var(--r-pill); background: var(--glass-bg-strong); border: 1px solid var(--glass-border-strong); font-size: .82rem; color: var(--text-secondary); }
+  .demo-note { font-size: .8rem; color: var(--text-muted); margin-top: 22px; line-height: 1.6; }
+</style>
+</head>
+<body>
+  <div class="demo-card glass gradient-border fade-up">
+    <div class="demo-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg></div>
+    <h1 id="demo-title">Demo Watch Link</h1>
+    <p>This is a placeholder destination so the Watch buttons work right out of the box.</p>
+    <div class="demo-meta" id="demo-meta"></div>
+    <a href="javascript:history.back()" class="btn btn-glow">Go Back</a>
+    <p class="demo-note">Admin note: every episode and movie in <code>data/anime-data.json</code> points here by default via its <code>watchLink</code> field. Replace each <code>watchLink</code> with your own licensed streaming URL whenever you're ready — see the <code>_instructions</code> block at the top of that file.</p>
+  </div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const title = params.get("title") || "this title";
+  const season = params.get("season");
+  const episode = params.get("episode");
+  document.getElementById("demo-title").textContent = "Demo Watch Link — " + title;
+  const meta = document.getElementById("demo-meta");
+  if (season && episode) {
+    meta.innerHTML = `<span>${title}</span><span>Season ${season}</span><span>Episode ${episode}</span>`;
+  } else {
+    meta.innerHTML = `<span>${title}</span><span>Movie</span>`;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e040fb"/>
+      <stop offset="50%" stop-color="#ab47bc"/>
+      <stop offset="100%" stop-color="#8e24aa"/>
+    </linearGradient>
+  </defs>
+  <!-- N lettermark -->
+  <rect x="0" y="2" width="11" height="36" rx="1" fill="url(#nGrad)"/>
+  <rect x="23" y="2" width="11" height="36" rx="1" fill="url(#nGrad)"/>
+  <polygon points="11,2 24,2 11,38" fill="url(#nGrad)" opacity="0.9"/>
+  <polygon points="11,2 24,2 24,38" fill="url(#nGrad)" opacity="0.7"/>
+  <line x1="13" y1="4" x2="25" y2="36" stroke="rgba(255,255,255,0.85)" stroke-width="1.8" stroke-linecap="round"/>
+  <circle cx="13" cy="4" r="1.5" fill="white" opacity="0.9"/>
+  <circle cx="25" cy="36" r="1.5" fill="white" opacity="0.9"/>
+  <!-- ANIME NEURIX text -->
+  <text x="44" y="25" font-family="'Poppins','Segoe UI',sans-serif" font-weight="700" font-size="17" letter-spacing="1.5" fill="#ffffff">ANIME</text>
+  <text x="104" y="25" font-family="'Poppins','Segoe UI',sans-serif" font-weight="700" font-size="17" letter-spacing="1.5" fill="url(#nGrad)">NEURIX</text>
+</svg>

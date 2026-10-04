@@ -1,0 +1,114 @@
+/* =========================================================
+   ANIME NEURIX · watch.css
+   Styles ONLY for the new Watch Page (#watch-root and .watch-*
+   classes). Nothing in this file touches selectors used
+   elsewhere on the site, so the homepage, cards, details page,
+   download page and nav are all completely unaffected.
+   ========================================================= */
+
+/* ---------- Hero / banner ---------- */
+.watch-hero { position: relative; height: 46vh; min-height: 320px; }
+.watch-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.watch-hero .hero-shade {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(5,3,9,.35) 0%, rgba(5,3,9,.75) 70%, var(--black) 100%);
+}
+.watch-back-btn {
+  position: absolute; top: calc(var(--nav-h) + 18px); left: var(--gutter);
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 9px 16px; border-radius: var(--r-pill);
+  background: var(--glass-bg-strong); border: 1px solid var(--glass-border-strong);
+  color: var(--text-primary); backdrop-filter: blur(10px);
+  font-weight: 600; font-size: .86rem; cursor: pointer;
+  transition: transform var(--fast) var(--ease), box-shadow var(--fast) var(--ease), background var(--fast) var(--ease);
+  z-index: 5;
+}
+.watch-back-btn:hover { background: rgba(255,255,255,.14); transform: translateY(-2px); box-shadow: 0 10px 26px var(--purple-glow-soft); }
+.watch-back-btn svg { width: 18px; height: 18px; }
+
+/* ---------- Title / meta strip ---------- */
+.watch-meta-grid {
+  display: grid; grid-template-columns: 180px 1fr; gap: 26px;
+  padding: 0 var(--gutter); margin-top: -90px; position: relative; z-index: 2;
+}
+.watch-poster {
+  border-radius: var(--r-lg); overflow: hidden; aspect-ratio: 420/620;
+  box-shadow: 0 22px 50px rgba(0,0,0,.6); border: 1px solid var(--glass-border-strong);
+}
+.watch-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.watch-info { padding-top: 96px; min-width: 0; }
+.watch-eyebrow { color: var(--purple-soft, var(--purple-2)); font-weight: 700; font-size: .82rem; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 6px; }
+.watch-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(1.4rem, 3vw, 2rem); line-height: 1.2; margin-bottom: 4px; }
+.watch-ep-title { font-weight: 600; font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 12px; }
+#w-meta-row { margin-bottom: 10px; }
+
+/* ---------- Player ---------- */
+.watch-player-section { padding: 30px var(--gutter) 10px; }
+.watch-player-wrap {
+  position: relative; width: 100%; aspect-ratio: 16/9;
+  border-radius: var(--r-lg); overflow: hidden; background: #000;
+  display: flex; align-items: center; justify-content: center;
+}
+.watch-video { width: 100%; height: 100%; display: block; background: #000; }
+
+/* ---------- Custom fullscreen button (Bug #2 fix) ---------- */
+.watch-fullscreen-btn {
+  position: absolute; right: 14px; bottom: 14px; z-index: 6;
+  display: flex; align-items: center; justify-content: center;
+  width: 42px; height: 42px; border-radius: var(--r-pill, 999px);
+  background: rgba(0,0,0,.5); border: 1px solid rgba(255,255,255,.18);
+  color: #fff; backdrop-filter: blur(6px); cursor: pointer;
+  transition: background .15s ease, transform .15s ease;
+}
+.watch-fullscreen-btn:hover { background: rgba(0,0,0,.7); transform: scale(1.06); }
+.watch-fullscreen-btn svg { width: 20px; height: 20px; }
+.watch-player-wrap:fullscreen .watch-fullscreen-btn,
+.watch-player-wrap:-webkit-full-screen .watch-fullscreen-btn { right: 22px; bottom: 22px; }
+
+.watch-player-state, .watch-fallback {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 14px; text-align: center; padding: 24px; color: var(--text-secondary);
+}
+.watch-spinner {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 3px solid var(--glass-border-strong); border-top-color: var(--purple-1);
+  animation: spin 1s linear infinite;
+}
+.watch-fallback svg { width: 44px; height: 44px; color: var(--purple-2); opacity: .85; }
+.watch-fallback-actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+
+.watch-player-controls {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  margin-top: 18px; flex-wrap: wrap;
+}
+.watch-player-controls .btn svg { width: 18px; height: 18px; }
+#w-prev-btn:disabled, #w-next-btn:disabled { opacity: .4; cursor: not-allowed; pointer-events: none; }
+
+/* ---------- Episode list ---------- */
+.watch-episode-list { padding-inline: var(--gutter); display: flex; flex-direction: column; }
+.watch-ep-row {
+  display: flex; gap: 16px; align-items: center; padding: 14px 18px;
+  border-top: 1px solid var(--glass-border); border-radius: var(--r-md);
+  cursor: pointer; transition: background var(--fast) var(--ease);
+  text-decoration: none; color: inherit;
+}
+.watch-ep-row:first-child { border-top: none; }
+.watch-ep-row:hover { background: var(--glass-bg); }
+.watch-ep-row.is-current { background: var(--glass-bg-strong); box-shadow: inset 3px 0 0 var(--purple-1); }
+.watch-ep-row .ep-num { width: 30px; flex-shrink: 0; text-align: center; font-weight: 700; color: var(--text-muted); }
+.watch-ep-row.is-current .ep-num { color: var(--purple-2); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .watch-meta-grid { grid-template-columns: 120px 1fr; gap: 16px; margin-top: -70px; }
+  .watch-info { padding-top: 60px; }
+  .watch-back-btn { top: calc(var(--nav-h) + 10px); padding: 7px 12px; font-size: .8rem; }
+  .watch-player-controls { justify-content: center; }
+  .watch-player-controls .btn span { display: none; }
+}
+@media (max-width: 560px) {
+  .watch-meta-grid { grid-template-columns: 1fr; }
+  .watch-poster { max-width: 140px; margin: 0 auto; }
+  .watch-info { text-align: center; padding-top: 14px; }
+  #w-meta-row, #w-genres { justify-content: center; }
+}

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Watch · Anime NeuriX</title>
+<meta name="description" content="Watch anime on Anime NeuriX.">
+<meta name="theme-color" content="#07050f">
+
+<meta property="og:type" content="video.episode">
+<meta property="og:title" content="Anime NeuriX">
+<meta property="og:description" content="Watch anime on Anime NeuriX.">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/png" href="images/logos/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+<!-- Existing site stylesheets — untouched, loaded exactly like every other page -->
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/premium.css">
+<!-- New: styles scoped to #watch-root only. Nothing here overrides site-wide rules. -->
+<link rel="stylesheet" href="css/watch.css">
+<link rel="stylesheet" href="css/player-extras.css">
+<!-- New: custom OTT control bar (play/seek/volume/speed/PiP/theater/fullscreen).
+     Loaded last so it can safely override bottom-offset spacing for the
+     skip-intro/outro buttons without touching player-extras.css. -->
+<link rel="stylesheet" href="css/custom-controls.css">
+<!-- New: styles the YouTube thumbnail + Play button card (#w-youtube-card).
+     No iframe embed is used anywhere. -->
+<link rel="stylesheet" href="css/youtube-player.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+<a href="#watch-root" class="skip-link">Skip to content</a>
+
+<div id="loading-screen" aria-hidden="true">
+  <div class="loader-grid"></div>
+  <div class="loader-particles"></div>
+  <div class="loader-content">
+    <div class="loader-icon-brand">
+      <img class="loader-brand-img" src="images/logos/logo-vertical.png" alt="Anime NeuriX">
+    </div>
+    <div class="loader-bar-track" style="margin-top:20px;"><div class="loader-bar-fill"></div></div>
+    <div class="loader-text">Loading Anime Universe…</div>
+  </div>
+</div>
+
+<header class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-left">
+      <a href="index.html" class="brand"><img src="images/logos/logo-horizontal.png" alt="Anime NeuriX"></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="genre.html?genre=Action">Series</a>
+        <a href="genre.html?genre=Adventure">Movies</a>
+        <a href="genre.html?genre=Action&sort=trending">Trending</a>
+        <a href="genre.html?genre=Fantasy">Genres</a>
+        <a href="index.html#anime-news">Anime News</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" data-open-search aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <a class="icon-btn" href="watchlist.html" aria-label="My watchlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4V4z"/></svg>
+        <span class="badge-count js-wl-count" style="display:none;">0</span>
+      </a>
+      <a class="icon-btn hide-xs" href="favorites.html" aria-label="My favorites">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-10-9.3C.4 7.9 2.3 4 6.1 4 8.4 4 10.3 5.4 12 7.5 13.7 5.4 15.6 4 17.9 4c3.8 0 5.7 3.9 4.1 7.7C19.5 16.4 12 21 12 21z"/></svg>
+        <span class="badge-count js-fav-count" style="display:none;">0</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-scrim" id="nav-scrim"></div>
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+  <a href="index.html">Home</a>
+  <a href="genre.html?genre=Action">Series</a>
+  <a href="genre.html?genre=Adventure">Movies</a>
+  <a href="genre.html?genre=Action&sort=trending">Trending</a>
+  <a href="genre.html?genre=Fantasy">Genres</a>
+  <a href="index.html#anime-news">Anime News</a>
+  <a href="watchlist.html">My Watchlist</a>
+  <a href="favorites.html">My Favorites</a>
+</nav>
+
+<main id="watch-root">
+
+  <!-- Banner -->
+  <section class="watch-hero">
+    <img id="w-banner-img" src="" alt="">
+    <span class="hero-shade"></span>
+    <button class="watch-back-btn" id="w-back-btn" aria-label="Go back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+      <span>Back</span>
+    </button>
+  </section>
+
+  <!-- Title / meta strip -->
+  <section class="watch-meta-grid">
+    <div class="watch-poster gradient-border">
+      <img id="w-poster-img" src="" alt="">
+    </div>
+    <div class="watch-info">
+      <div class="watch-eyebrow" id="w-eyebrow">Season — · Episode —</div>
+      <h1 class="watch-title" id="w-title">Loading…</h1>
+      <h2 class="watch-ep-title" id="w-ep-title"></h2>
+      <div class="details-meta-row" id="w-meta-row">
+        <span class="pill rating-pill">★ <span id="w-rating"></span></span>
+        <span class="pill" id="w-type"></span>
+        <span class="pill" id="w-year"></span>
+      </div>
+      <div class="details-genre-row" id="w-genres"></div>
+
+      <!-- Problem #8: Like/Dislike + Download + 3-dot, separate from player controls -->
+      <div class="watch-actions-row">
+        <div class="watch-vote-group">
+          <button type="button" class="watch-vote-btn" id="w-like-btn" aria-label="Like this episode" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 22V11M2 13v7a2 2 0 002 2h12.6a2 2 0 002-1.7l1.4-9A2 2 0 0018 9h-5.5l1-5.5A1.5 1.5 0 0012 2c-.4 0-.7.2-1 .5L7 11"/></svg>
+            <span id="w-like-count">0</span>
+          </button>
+          <button type="button" class="watch-vote-btn" id="w-dislike-btn" aria-label="Dislike this episode" aria-pressed="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 2v11M22 11V4a2 2 0 00-2-2H7.4a2 2 0 00-2 1.7l-1.4 9A2 2 0 006 15h5.5l-1 5.5a1.5 1.5 0 002.5 1.3l4-8.5"/></svg>
+            <span id="w-dislike-count">0</span>
+          </button>
+        </div>
+        <div class="watch-actions-right">
+          <a class="watch-icon-btn" id="w-download-btn" href="#" aria-label="Download episode">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 21h16"/></svg>
+          </a>
+          <div class="watch-more-wrap" id="w-more-wrap">
+            <button type="button" class="watch-icon-btn" id="w-more-btn" aria-label="More options">
+              <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="5" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="12" cy="19" r="1.8"/></svg>
+            </button>
+            <div class="watch-more-menu" id="w-more-menu">
+              <a id="w-more-view-series" href="#">View Series</a>
+              <button type="button" id="w-more-share">Share Episode</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="details-desc" id="w-ep-desc"></p>
+    </div>
+  </section>
+
+  <!-- Player -->
+  <section class="watch-player-section">
+    <div class="watch-player-wrap glass gradient-border" id="w-player-wrap">
+      <div class="watch-player-state" id="w-player-state">
+        <div class="watch-spinner"></div>
+        <p id="w-player-state-text">Checking available stream…</p>
+      </div>
+      <video id="w-video" class="watch-video" preload="metadata" playsinline crossorigin="anonymous" disableRemotePlayback controlsList="nodownload nofullscreen noremoteplayback noplaybackrate" style="display:none;"></video>
+      <!-- New: YouTube thumbnail card. watch-loader.js fills this with the
+           episode thumbnail + dark overlay + Play button whenever an
+           episode's resolved stream source is "youtube" — no iframe is
+           ever created. Clicking anywhere on it navigates to YouTube in
+           the same tab. -->
+      <div id="w-youtube-card" class="watch-youtube-card" style="display:none;"></div>
+      <button class="watch-fullscreen-btn" id="w-fullscreen-btn" aria-label="Enter fullscreen" title="Fullscreen" style="display:none;">
+        <svg id="w-fullscreen-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/>
+        </svg>
+      </button>
+      <div class="watch-fallback" id="w-fallback" style="display:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+        <p id="w-fallback-text">Streaming isn't available for this episode right now.</p>
+        <div class="watch-fallback-actions" id="w-fallback-actions"></div>
+      </div>
+    </div>
+
+    <div class="watch-player-controls">
+      <button class="btn btn-ghost" id="w-prev-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg><span>Previous Episode</span></button>
+      <button class="btn btn-ghost" id="w-next-btn"><span>Next Episode</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+    </div>
+  </section>
+
+  <!-- Next Episode — Problem #8: a compact single card, not the full list -->
+  <section class="watch-next-ep-section" id="w-next-ep-section" style="display:none;">
+    <h2 class="subsection-title">Next Episode</h2>
+    <a class="watch-next-ep-card" id="w-next-ep-card" href="#">
+      <div class="wnec-thumb">
+        <img id="w-next-ep-thumb" src="" alt="">
+        <span class="ep-play">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5z"/></svg>
+        </span>
+      </div>
+      <div class="wnec-info">
+        <div class="wnec-title" id="w-next-ep-title"></div>
+        <div class="wnec-duration" id="w-next-ep-duration"></div>
+      </div>
+      <button type="button" class="watch-icon-btn wnec-download" id="w-next-ep-download" aria-label="Download next episode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 21h16"/></svg>
+      </button>
+    </a>
+  </section>
+
+  <!-- All Episodes — collapsed by default, matches the compact reference design -->
+  <section class="details-tabs-anchor" id="w-episodes-section">
+    <button type="button" class="watch-all-episodes-toggle" id="w-all-episodes-toggle">
+      <span>All Episodes</span>
+      <i class="chev" id="w-all-episodes-chev">⌄</i>
+    </button>
+    <div class="watch-episode-list" id="w-episode-list" hidden></div>
+  </section>
+
+  <!-- Related -->
+  <section class="section row-nav" id="w-related-section">
+    <div class="section-head"><h2 class="section-title">🎯 Related Anime</h2></div>
+    <div class="row-scroller" id="w-related"></div>
+  </section>
+
+
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+<button id="back-to-top" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<div id="bottom-nav-mount"></div>
+
+<script src="js/anime-loader.js"></script>
+<script src="js/watchlist.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/continue-watching.js"></script>
+<script src="js/recommendations.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/search.js"></script>
+<script src="js/genre-loader.js"></script>
+<script src="js/script.js"></script>
+<script src="js/votes.js"></script>
+<script src="js/watched.js"></script>
+<!-- New: Watch Page controller. Streams directly from Backblaze B2 public URLs when available. -->
+<script src="js/player-extras.js"></script>
+<script src="js/watch-loader.js"></script>
+<!-- watch-loader.js already declares AnimeHub.data / AnimeHub.playerFullscreen
+     before custom-controls.js runs, so script order below is unchanged. -->
+<!-- New: custom OTT-style control bar. Reads/controls the existing #w-video
+     element only — does not touch Backblaze streaming, routing, or data. -->
+<script src="js/custom-controls.js"></script>
+<script src="js/bottom-nav.js"></script>
+</body>
+</html>

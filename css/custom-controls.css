@@ -1,0 +1,232 @@
+/* =========================================================
+   ANIME NEURIX · custom-controls.css
+   Styles for the new custom OTT control bar (replaces the
+   browser's native <video controls> UI). Scoped entirely to
+   .cc-* classes inside #w-player-wrap — nothing here touches
+   selectors used elsewhere on the site.
+
+   Coexistence note: the existing bottom-right cluster from
+   player-extras.js (#pe-controls-row: speed / theater / PiP /
+   fullscreen) and the skip-intro/outro buttons are NOT moved
+   in the DOM. This bar is drawn behind them (lower z-index) so
+   they continue to render, function, and fade exactly as
+   before — visually merged into this bar's bottom strip. Only
+   the skip buttons' bottom offset is nudged up below so they
+   clear the new bar instead of sitting under it.
+   ========================================================= */
+
+.cc-bar {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  z-index: 5; /* below pe-controls-row(6) / skip(6) / resume(7) / autonext(8) */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 26px 14px 10px;
+  background: linear-gradient(180deg, transparent 0%, rgba(3,2,7,.55) 45%, rgba(3,2,7,.92) 100%);
+  opacity: 1;
+  transition: opacity .35s ease;
+  pointer-events: auto;
+}
+.watch-player-wrap.cc-hidden .cc-bar,
+.watch-player-wrap.cc-hidden .pe-controls-row {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------- Seek row ---------- */
+.cc-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cc-time {
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  min-width: 40px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+.cc-seek-wrap {
+  position: relative;
+  flex: 1;
+  height: 16px;
+  display: flex;
+  align-items: center;
+}
+.cc-seek-track {
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.cc-seek-buffered {
+  position: absolute;
+  left: 0; top: 50%;
+  height: 4px;
+  width: 0%;
+  border-radius: 999px;
+  background: rgba(255,255,255,.35);
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.cc-seek-played {
+  position: absolute;
+  left: 0; top: 50%;
+  height: 4px;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--purple-2, #c084fc), var(--purple-1, #8b2af0));
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.cc-seek {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  height: 16px;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.cc-seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 13px; height: 13px; border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(139,42,240,.35), 0 2px 6px rgba(0,0,0,.5);
+  margin-top: 0;
+  cursor: pointer;
+  transition: transform .12s ease;
+}
+.cc-seek:hover::-webkit-slider-thumb { transform: scale(1.15); }
+.cc-seek::-moz-range-thumb {
+  width: 13px; height: 13px; border-radius: 50%; border: none;
+  background: #fff; box-shadow: 0 0 0 3px rgba(139,42,240,.35), 0 2px 6px rgba(0,0,0,.5);
+  cursor: pointer;
+}
+.cc-seek::-webkit-slider-runnable-track { background: transparent; height: 16px; }
+.cc-seek::-moz-range-track { background: transparent; height: 16px; }
+
+/* ---------- Buttons row ---------- */
+.cc-buttons-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 34px;
+  /* Reserve room for the existing pe-controls-row cluster which sits
+     absolutely positioned at bottom-right (speed + theater + PiP +
+     fullscreen ≈ 4 × 42px buttons + gaps). Purely visual spacing — no
+     DOM relationship to that cluster. */
+  padding-right: 196px;
+}
+.cc-left-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cc-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+  transition: background .15s ease, transform .15s ease;
+  flex-shrink: 0;
+}
+.cc-btn:hover { background: rgba(255,255,255,.12); transform: scale(1.06); }
+.cc-btn svg { width: 20px; height: 20px; }
+
+.cc-play-btn svg { width: 22px; height: 22px; }
+.cc-icon-pause { display: none; }
+.cc-play-btn.is-playing .cc-icon-play { display: none; }
+.cc-play-btn.is-playing .cc-icon-pause { display: block; }
+
+.cc-volume-wrap {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.cc-icon-vol-mute, .cc-icon-vol-low { display: none; }
+.cc-mute-btn.cc-vol-off .cc-icon-vol-high,
+.cc-mute-btn.cc-vol-off .cc-icon-vol-low { display: none; }
+.cc-mute-btn.cc-vol-off .cc-icon-vol-mute { display: block; }
+.cc-mute-btn.cc-vol-low .cc-icon-vol-high { display: none; }
+.cc-mute-btn.cc-vol-low .cc-icon-vol-low { display: block; }
+
+.cc-volume {
+  width: 80px;
+  margin: 0;
+  height: 14px;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.cc-volume::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 999px; background: rgba(255,255,255,.25);
+}
+.cc-volume::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: #fff; margin-top: -3.5px;
+  box-shadow: 0 0 0 2px rgba(139,42,240,.35);
+  cursor: pointer;
+}
+.cc-volume::-moz-range-track { height: 4px; border-radius: 999px; background: rgba(255,255,255,.25); }
+.cc-volume::-moz-range-thumb {
+  width: 11px; height: 11px; border-radius: 50%; border: none;
+  background: #fff; box-shadow: 0 0 0 2px rgba(139,42,240,.35); cursor: pointer;
+}
+
+/* ---------- Double-click seek flash (±10s feedback) ---------- */
+.cc-seek-flash {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0,0,0,.55);
+  border-radius: 999px;
+  padding: 10px 18px;
+  color: #fff;
+  font-weight: 700;
+  font-size: .85rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .25s ease;
+}
+.cc-seek-flash.cc-show { opacity: 1; }
+.cc-seek-flash.cc-left { left: 22%; }
+.cc-seek-flash.cc-right { left: 78%; }
+
+/* ---------- Nudge skip-intro/outro buttons above the new bar ---------- */
+.pe-skip-btn { bottom: 92px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 760px) {
+  .cc-buttons-row { padding-right: 176px; }
+  .cc-bar { padding: 20px 10px 8px; gap: 4px; }
+}
+@media (max-width: 560px) {
+  .cc-volume { width: 0; opacity: 0; pointer-events: none; margin: 0; }
+  .cc-buttons-row { padding-right: 150px; }
+  .cc-time { min-width: 34px; font-size: .72rem; }
+  .pe-skip-btn { bottom: 100px; font-size: .78rem; padding: 8px 12px; }
+}
+@media (max-width: 400px) {
+  .cc-buttons-row { padding-right: 128px; }
+}

@@ -1,0 +1,96 @@
+/* =========================================================
+   ANIME NEURIX · youtube-player.css
+   YouTube episodes are never embedded. This styles the
+   "paused player" thumbnail card (#w-youtube-card) that's
+   shown instead: episode thumbnail + dark overlay + a
+   centered premium Play button + a "Watch on YouTube" label.
+   Clicking anywhere on it hands off to YouTube in the same
+   tab (see js/watch-loader.js). Scoped entirely to .yt-card-*
+   / #w-youtube-card — does not touch the Backblaze <video>,
+   the custom OTT control bar (.cc-*), the pe-controls-row
+   cluster, or any other selector on the page.
+   ========================================================= */
+
+.watch-youtube-card {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3; /* same stacking context .watch-video occupies; below pe-controls-row(6)/skip(6)/resume(7)/autonext(8), which stay hidden in YouTube mode anyway */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background: #000;
+}
+
+/* Episode thumbnail — fills the same box the Backblaze <video> would,
+   keeping the exact same player aspect ratio. */
+.yt-card-thumb {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Subtle dark overlay so the Play button and label stay readable on any
+   thumbnail, without hiding the artwork. */
+.yt-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 5, 15, .25) 0%, rgba(7, 5, 15, .5) 60%, rgba(7, 5, 15, .72) 100%);
+}
+
+/* Large premium ▶ Play button, matching the site's purple/pink neon accent. */
+.yt-card-play-btn {
+  position: relative;
+  z-index: 1;
+  width: 86px;
+  height: 86px;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--purple-2, #c084fc), var(--purple-1, #8b2af0));
+  box-shadow: 0 0 0 6px rgba(139, 42, 240, .18), 0 10px 34px rgba(139, 42, 240, .5);
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.yt-card-play-btn svg {
+  width: 34px;
+  height: 34px;
+  color: #fff;
+  margin-left: 4px; /* optically center the triangle */
+}
+.watch-youtube-card:hover .yt-card-play-btn,
+.watch-youtube-card:focus-visible .yt-card-play-btn {
+  transform: scale(1.08);
+  box-shadow: 0 0 0 9px rgba(139, 42, 240, .26), 0 12px 40px rgba(139, 42, 240, .6);
+}
+
+/* "Watch on YouTube" label below the button. */
+.yt-card-label {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-weight: 600;
+  font-size: .9rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  opacity: .92;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, .6);
+}
+
+@media (max-width: 560px) {
+  .yt-card-play-btn { width: 64px; height: 64px; }
+  .yt-card-play-btn svg { width: 26px; height: 26px; }
+  .yt-card-label { font-size: .78rem; }
+}

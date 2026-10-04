@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Browse Genre · Anime NeuriX</title>
+<meta name="description" content="Browse anime and movies by genre on Anime NeuriX.">
+<meta name="theme-color" content="#07050f">
+<link rel="icon" type="image/png" href="images/logos/app-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/premium.css">
+<link rel="stylesheet" href="css/genre.css">
+<link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+<a href="#genre-page-root" class="skip-link">Skip to content</a>
+
+<div id="genre-cinematic" aria-hidden="true"></div>
+
+<header class="navbar" id="navbar">
+  <div class="container">
+    <div class="nav-left">
+      <a href="index.html" class="brand"><img src="images/logos/logo-horizontal.png" alt="Anime NeuriX"></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="genre.html?genre=Action">Series</a>
+        <a href="genre.html?genre=Adventure">Movies</a>
+        <a href="genre.html?genre=Action&sort=trending">Trending</a>
+        <a href="genre.html?genre=Fantasy">Genres</a>
+        <a href="index.html#anime-news">Anime News</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" data-open-search aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <a class="icon-btn" href="watchlist.html" aria-label="My watchlist">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4h12v17l-6-4-6 4V4z"/></svg>
+        <span class="badge-count js-wl-count" style="display:none;">0</span>
+      </a>
+      <a class="icon-btn hide-xs" href="favorites.html" aria-label="My favorites">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-10-9.3C.4 7.9 2.3 4 6.1 4 8.4 4 10.3 5.4 12 7.5 13.7 5.4 15.6 4 17.9 4c3.8 0 5.7 3.9 4.1 7.7C19.5 16.4 12 21 12 21z"/></svg>
+        <span class="badge-count js-fav-count" style="display:none;">0</span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-scrim" id="nav-scrim"></div>
+<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
+  <a href="index.html">Home</a>
+  <a href="genre.html?genre=Action">Series</a>
+  <a href="genre.html?genre=Adventure">Movies</a>
+  <a href="genre.html?genre=Action&sort=trending">Trending</a>
+  <a href="genre.html?genre=Fantasy">Genres</a>
+  <a href="index.html#anime-news">Anime News</a>
+  <a href="watchlist.html">My Watchlist</a>
+  <a href="favorites.html">My Favorites</a>
+</nav>
+
+<main id="genre-page-root">
+
+  <section class="page-banner genre-banner">
+    <img id="genre-banner-img" src="" alt="">
+    <span class="hero-shade"></span>
+    <div class="genre-banner-inner">
+      <div class="genre-eyebrow" id="genre-eyebrow">Genre</div>
+      <h1 class="genre-name" id="genre-name">Action</h1>
+      <p class="genre-count" id="genre-count">— titles</p>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="toolbar-search glass">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" id="genre-search" placeholder="Search within this genre…" aria-label="Search this genre">
+    </div>
+    <div class="toolbar-controls">
+      <div class="select-wrap">
+        <select id="genre-sort" aria-label="Sort">
+          <option value="popularity">Sort: Popularity</option>
+          <option value="rating">Sort: Rating</option>
+          <option value="year">Sort: Release Year</option>
+          <option value="az">Sort: A–Z</option>
+        </select>
+      </div>
+      <button class="btn btn-ghost filter-drawer-trigger" id="filter-drawer-trigger">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+        Filters
+      </button>
+    </div>
+  </div>
+
+  <div class="filter-badges" id="filter-badges"></div>
+
+  <div class="anime-grid" id="genre-grid" style="padding-inline: var(--gutter);"></div>
+  <div class="state-block" id="genre-empty-state" style="display:none;">
+    <div class="state-icon">🔍</div>
+    <h3>No titles match these filters</h3>
+    <p>Try removing a filter or searching a different term.</p>
+  </div>
+
+  <div class="pagination" id="pagination"></div>
+</main>
+
+<!-- Filter Drawer -->
+<div class="filter-drawer" id="filter-drawer">
+  <div class="filter-drawer-head">
+    <h3>Filters</h3>
+    <button class="icon-btn" id="filter-drawer-close" aria-label="Close filters">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="filter-drawer-body" id="filter-drawer-body"></div>
+  <div class="filter-drawer-foot">
+    <button class="btn btn-ghost" id="filter-drawer-clear">Clear</button>
+    <button class="btn btn-glow" id="filter-drawer-apply">Apply Filters</button>
+  </div>
+</div>
+
+<footer class="site-footer" id="site-footer"></footer>
+<button id="back-to-top" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<div id="bottom-nav-mount"></div>
+
+<script src="js/anime-loader.js"></script>
+<script src="js/watchlist.js"></script>
+<script src="js/favorites.js"></script>
+<script src="js/continue-watching.js"></script>
+<script src="js/recommendations.js"></script>
+<script src="js/comments.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/search.js"></script>
+<script src="js/genre-loader.js"></script>
+<script src="js/script.js"></script>
+<script src="js/bottom-nav.js"></script>
+</body>
+</html>
