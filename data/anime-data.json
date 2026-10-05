@@ -71,7 +71,7 @@
       "category": "anime",
       "poster": "images/posters/solo-leveling.jpg",
       "banner": "images/banners/solo-leveling.png",
-      "heroBanner": "images/herobanners/solo-leveling.png",
+      "heroBanner": "images/heroBanners/solo-leveling.png",
       "detailBanner": "images/banners/solo-leveling.jpg",
       "rating": 8.5,
       "genres": [
@@ -533,7 +533,7 @@
       "category": "anime",
       "poster": "images/posters/jujutsu-kaisen.jpg",
       "banner": "images/banners/jujutsu-kaisen.png",
-      "heroBanner": "images/herobanners/jujutsu-kaisen.png",
+      "heroBanner": "images/heroBanners/jujutsu-kaisen.png",
       "detailBanner": "images/banners/jujutsu-kaisen.png",
       "rating": 8.7,
       "genres": [
@@ -1515,7 +1515,7 @@
       "category": "anime",
       "poster": "images/posters/attack-on-titan.jpg",
       "banner": "images/banners/attack-on-titan.png",
-      "heroBanner": "images/herobanners/attack-on-titan.png",
+      "heroBanner": "images/heroBanners/attack-on-titan.png",
       "detailBanner": "images/banners/attack-on-titan.png",
       "rating": 9.1,
       "genres": [
@@ -2160,7 +2160,7 @@
       "category": "anime",
       "poster": "images/posters/demon-slayer.jpg",
       "banner": "images/banners/demon-slayer.png",
-      "heroBanner": "images/herobanners/demon-slayer.png",
+      "heroBanner": "images/heroBanners/demon-slayer.png",
       "detailBanner": "images/banners/demon-slayer.png",
       "rating": 8.8,
       "genres": [
@@ -2640,7 +2640,7 @@
       "category": "anime",
       "poster": "images/posters/one-piece.jpg",
       "banner": "images/banners/one-piece.jpg",
-      "heroBanner": "images/herobanners/one-piece.png",
+      "heroBanner": "images/heroBanners/one-piece.png",
       "detailBanner": "images/banners/one-piece.png",
       "rating": 8.7,
       "genres": [
@@ -5531,7 +5531,7 @@
       "category": "movie",
       "poster": "images/posters/spirited-away.jpg",
       "banner": "images/banners/spirited-away (2).png",
-      "heroBanner": "images/herobanners/spirited-away.png",
+      "heroBanner": "images/heroBanners/spirited-away.png",
       "detailBanner": "images/banners/spirited-away.png",
       "rating": 9.2,
       "genres": [
