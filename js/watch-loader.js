@@ -55,6 +55,7 @@
         description: item.description, thumbnail: item.banner, watchLink: item.watchLink,
         downloadLinks: item.downloadLinks, backblazeUrl: item.backblazeUrl || "",
         source: item.source || "", videoUrl: item.videoUrl || "",
+        subtitles: item.subtitles || [],
         introStart: item.introStart, introEnd: item.introEnd,
         outroStart: item.outroStart, outroEnd: item.outroEnd,
       }];
@@ -93,6 +94,12 @@
     const src = (ep.source || "").trim().toLowerCase();
     if (src === "youtube" && ep.videoUrl && ep.videoUrl.trim()) {
       return { source: "youtube", videoId: extractYoutubeId(ep.videoUrl) };
+    }
+    // HLS: either source "hls", or a "backblaze" source whose URL is a .m3u8 playlist.
+    // Plain MP4/MKV "backblaze" URLs keep going down the original path below.
+    const hlsUrl = (ep.videoUrl || "").trim();
+    if (hlsUrl && (src === "hls" || (src === "backblaze" && /\.m3u8(?:$|[?#])/i.test(hlsUrl)))) {
+      return { source: "hls", videoUrl: hlsUrl, subtitles: Array.isArray(ep.subtitles) ? ep.subtitles : [] };
     }
     if (src === "backblaze" && ep.videoUrl && ep.videoUrl.trim()) {
       return { source: "backblaze", videoUrl: ep.videoUrl.trim() };
@@ -160,9 +167,14 @@
       document.getElementById("w-ep-title").textContent = item.category === "movie" ? "" : `E${ep.episodeNumber} - ${ep.title || ""}`;
       document.getElementById("w-ep-desc").textContent = ep.description || item.description || "";
       initDescReadMore();
-      document.getElementById("w-rating").textContent = item.rating.toFixed(1);
+      // Rating / year are optional for newly added titles (never invent them) — hide the pill instead of crashing.
+      const hasRating = typeof item.rating === "number" && item.rating > 0;
+      document.getElementById("w-rating").textContent = hasRating ? item.rating.toFixed(1) : "";
+      const ratingPill = document.querySelector("#w-meta-row .rating-pill");
+      if (ratingPill) ratingPill.style.display = hasRating ? "" : "none";
       document.getElementById("w-type").textContent = item.category === "movie" ? "Movie" : "Series";
-      document.getElementById("w-year").textContent = item.releaseYear;
+      document.getElementById("w-year").textContent = item.releaseYear || "";
+      document.getElementById("w-year").style.display = item.releaseYear ? "" : "none";
       document.getElementById("w-genres").innerHTML = (item.genres || [])
         .map((g) => `<a class="search-chip" href="genre.html?genre=${encodeURIComponent(g)}">${g}</a>`).join("");
 
@@ -435,6 +447,9 @@
     const fallbackActions = document.getElementById("w-fallback-actions");
     const fsBtn = document.getElementById("w-fullscreen-btn");
 
+    // Tear down any previous HLS session first (hls.js owns the element until it is destroyed).
+    if (AnimeHub.hlsPlayer) AnimeHub.hlsPlayer.detach();
+
     // Reset UI for this episode — identical Backblaze reset as before, plus
     // clearing any previous YouTube thumbnail card.
     video.pause();
@@ -456,6 +471,8 @@
       stateBox.style.display = "none";
       fallback.style.display = "flex";
       fallbackText.textContent = message;
+      const resumePrompt = document.getElementById("pe-resume-prompt");
+      if (resumePrompt) resumePrompt.style.display = "none";
       fallbackActions.innerHTML = (ep.watchLink && ep.watchLink.trim())
         ? `<a class="btn btn-ghost" href="${ep.watchLink}" target="_blank" rel="noopener noreferrer"><span>Open Watch Link</span></a>`
         : "";
@@ -484,6 +501,25 @@
       // Exception: auto-advancing from the previous episode's countdown (or
       // its "Play Now" button) DOES autoplay, same as Netflix/Crunchyroll.
       if (neighbors.autoplay) video.play().catch(() => { /* autoplay may be blocked — user can press play */ });
+    } else if (stream.source === "hls") {
+      // ----- HLS path (hls.js / native HLS): adaptive quality, audio languages, WebVTT subtitles ----- //
+      const posterSrc = ep.thumbnail || item.banner || "";
+      if (posterSrc) video.setAttribute("poster", posterSrc);
+      video.style.display = "block";
+      if (fsBtn) fsBtn.style.display = "flex";
+      if (AnimeHub.hlsPlayer) {
+        // attach() returns false (after calling onFatal) if playback can't even start.
+        const started = AnimeHub.hlsPlayer.attach({
+          video, url: stream.videoUrl, subtitles: stream.subtitles,
+          onFatal: (msg) => showFallback(msg || "This episode's video couldn't be loaded."),
+        });
+        if (started) {
+          hasVideo = true;
+          if (neighbors.autoplay) video.play().catch(() => { /* autoplay may be blocked — user can press play */ });
+        }
+      } else {
+        showFallback("The video player component couldn't be loaded. Reload the page and try again.");
+      }
     } else if (stream.source === "youtube" && stream.videoId && ytCard) {
       // ----- YouTube path: no embed at all. Show the episode thumbnail like
       // a paused player, with a centered Play button that hands off to

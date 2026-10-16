@@ -223,6 +223,12 @@
     }, 1000);
   }
 
+  // video.load() would tear down an HLS (MSE) stream, so HLS episodes rewind instead.
+  function resetToPoster() {
+    if (AnimeHub.hlsPlayer && AnimeHub.hlsPlayer.isActive()) AnimeHub.hlsPlayer.reset();
+    else els.video.load();
+  }
+
   function handleEnded() {
     if (state.youtubeMode) return; // Auto Next Episode is a Backblaze-only OTT feature
     saveProgress(true);
@@ -230,7 +236,7 @@
       showAutoNextPopup();
     } else {
       // No next episode — just reset so the poster/play button reappear.
-      els.video.load();
+      resetToPoster();
     }
   }
 
@@ -411,7 +417,7 @@
     });
     els.cancelBtn.addEventListener("click", () => {
       hideAutoNext();
-      els.video.load(); // stay here, reset to paused poster state
+      resetToPoster(); // stay here, reset to paused poster state
     });
 
     els.video.addEventListener("timeupdate", () => {

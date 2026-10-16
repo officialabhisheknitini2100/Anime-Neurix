@@ -32,6 +32,9 @@
 <!-- New: styles the YouTube thumbnail + Play button card (#w-youtube-card).
      No iframe embed is used anywhere. -->
 <link rel="stylesheet" href="css/youtube-player.css">
+<!-- New: HLS quality / audio / subtitle menus + loading spinner + subtitle cues.
+     Scoped to #w-player-wrap with .hp-* class names only. -->
+<link rel="stylesheet" href="css/hls-player.css">
 <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body>
@@ -239,6 +242,10 @@
 <script src="js/watched.js"></script>
 <!-- New: Watch Page controller. Streams directly from Backblaze B2 public URLs when available. -->
 <script src="js/player-extras.js"></script>
+<!-- New: HLS support. hls.js 1.6.15 is vendored locally (no CDN dependency); hls-player.js
+     wraps it and must load before watch-loader.js, which calls AnimeHub.hlsPlayer. -->
+<script src="js/vendor/hls.min.js"></script>
+<script src="js/hls-player.js"></script>
 <script src="js/watch-loader.js"></script>
 <!-- watch-loader.js already declares AnimeHub.data / AnimeHub.playerFullscreen
      before custom-controls.js runs, so script order below is unchanged. -->

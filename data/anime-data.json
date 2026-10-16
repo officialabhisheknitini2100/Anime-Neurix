@@ -19,7 +19,8 @@
     "howToEditNews": "Edit the top-level 'news' array to control the homepage Anime News section. Each article needs id, title, date (YYYY-MM-DD), image, summary and an optional relatedAnimeId linking to a title in the catalog.",
     "howToEditWatchLinksDemo": "Every episode/movie 'watchLink' currently points to demo-link.html (a built-in placeholder page) so the Watch buttons work out of the box. Replace these with your own licensed watch URLs whenever you're ready - see howToEditWatchLinks above for the rules on what you may link to.",
     "howToEditDownloadLinks": "Each episode (and each movie, which behaves as a single season-1/episode-1 entry) now has a 'downloadLinks' object with three quality keys: '480p', '720p', '1080p'. Leave any quality empty ('') to show that quality as 'Coming Soon' (disabled) on the Download page. Fill in a direct file/host URL for a quality to make that button clickable. The per-episode Download button in the episode list always links to download.html?id=<animeId>&season=<n>&episode=<n>, which reads this object and displays the three quality options.",
-    "howToEditStreamingSource": "Optional. Each episode (or a movie's top-level object) now uses a 'source' + 'videoUrl' pair instead of 'backblazeUrl'. Set \"source\": \"backblaze\" with 'videoUrl' as a direct public Backblaze B2 file URL to stream that title directly on the Watch Page - no server, API key, or proxy required, since B2 file URLs are public. Set \"source\": \"youtube\" with 'videoUrl' as a YouTube video ID or full URL to embed the official YouTube player instead (Backblaze-only features like Continue Watching, Skip Intro/Outro, and Auto Next Episode are disabled for YouTube episodes). Leave 'source' and 'videoUrl' empty ('') to skip streaming for that episode; the Watch Page will automatically fall back to the existing 'watchLink' instead, exactly as it did before streaming was added."
+    "howToEditStreamingSource": "Optional. Each episode (or a movie's top-level object) now uses a 'source' + 'videoUrl' pair instead of 'backblazeUrl'. Set \"source\": \"backblaze\" with 'videoUrl' as a direct public Backblaze B2 file URL to stream that title directly on the Watch Page - no server, API key, or proxy required, since B2 file URLs are public. Set \"source\": \"youtube\" with 'videoUrl' as a YouTube video ID or full URL to embed the official YouTube player instead (Backblaze-only features like Continue Watching, Skip Intro/Outro, and Auto Next Episode are disabled for YouTube episodes). Leave 'source' and 'videoUrl' empty ('') to skip streaming for that episode; the Watch Page will automatically fall back to the existing 'watchLink' instead, exactly as it did before streaming was added.",
+    "howToEditHlsStreaming": "For adaptive HLS streams set \"source\": \"hls\" and \"videoUrl\" to the master .m3u8 playlist URL (a \"backblaze\" source whose videoUrl ends in .m3u8 is also treated as HLS). Quality, audio-language and subtitle menus are built from what the stream actually offers, so nothing else is needed for those. External WebVTT subtitles go in an optional \"subtitles\" array on the episode: [{\"lang\": \"en\", \"label\": \"English\", \"url\": \"https://.../english.vtt\"}]. Leave source, videoUrl and subtitles empty for episodes that are not uploaded yet."
   },
   "siteInfo": {
     "name": "Anime NeuriX",
@@ -4083,6 +4084,279 @@
       ],
       "editorsPick": true
     },
+        {
+      "id": "lord-of-mysteries",
+      "title": "Lord of Mysteries",
+      "category": "anime",
+      "poster": "images/posters/lord.png",
+      "banner": "images/banners/lordof.png",
+      "heroBanner": "images/banners/lordof.png",
+      "detailBanner": "images/banners/lordof.png",
+      "rating": 8.5,
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama"
+      ],
+      "releaseYear": 2025,
+      "status": "Ongoing",
+      "studio": "B.CMAY PICTURES",
+      "totalSeasons": 1,
+      "episodeCount": 13,
+      "popularity": 91,
+      "views": 470000000,
+      "favoritesCount": 3515,
+      "description": "Zhou Mingrui awakens in the body of Klein Moretti in a Victorian world of steam and hidden magic. As a new Beyonder, he confronts secret societies and dark rituals while seeking the truth behind his mysterious transmigration.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/frieren-beyond-journeys-end-shot-1.jpg",
+        "images/thumbnails/frieren-beyond-journeys-end-shot-2.jpg",
+        "images/thumbnails/frieren-beyond-journeys-end-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Kaito Mizuki",
+          "role": "Antagonist",
+          "voiceActor": "Aiko Hara",
+          "avatar": "images/thumbnails/kaito-mizuki.png"
+        },
+        {
+          "name": "Asuka Lang",
+          "role": "Antagonist",
+          "voiceActor": "Daiki Kobayashi",
+          "avatar": "images/thumbnails/asuka-lang.png"
+        },
+        {
+          "name": "Ren Mizuki",
+          "role": "Antagonist",
+          "voiceActor": "Takeshi Fujii",
+          "avatar": "images/thumbnails/ren-mizuki.png"
+        },
+        {
+          "name": "Yuki Tanaka",
+          "role": "Love Interest",
+          "voiceActor": "Aiko Kobayashi",
+          "avatar": "images/thumbnails/yuki-tanaka.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "The Fool",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 01.jpg",
+              "duration": "24m",
+              "description": "Zhou Mingrui wakes up in the body of Klein Moretti. A strange notebook holds the key to a dark power.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=1",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-01/master.m3u8",
+              "subtitles": [
+               
+  {
+    "lang": "en",
+    "label": "English",
+    "url": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-01/subtitles/english.vtt"
+  },
+  {
+    "lang": "hi",
+    "label": "Hindi",
+    "url": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-01/subtitles/hindi.vtt"
+  }
+]
+
+            },
+            {
+              "episodeNumber": 2,
+              "title": "Beyonder",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 02.jpg",
+              "duration": "24m",
+              "description": "Klein Moretti joins the Nighthawks and heads off on his first task to find an abducted child.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=2",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-02/master.m3u8"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "The Notebook",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 03.jpg",
+              "duration": "24m",
+              "description": "Klein Moretti pursues the Antigonus Family's notebook and faces off against another Beyonder.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-03/master.m3u8"
+            },
+            {
+              "episodeNumber": 4,
+               "title": "Magic Mirror",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 04.jpg",
+              "duration": "24m",
+              "description": "Klein Moretti learns ritualistic magic from Old Neil. Meanwhile, an organization has their eyes on Klein.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-04/master.m3u8"
+            },
+             {
+              "episodeNumber": 5,
+               "title": "Hero",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 05.jpg",
+              "duration": "24m",
+              "description": "A tragedy befalls a passenger ship and Klein Moretti is tasked with solving the mystery.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-05/master.m3u8"
+            },
+             {
+              "episodeNumber": 6,
+               "title": "Teacher",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 06.jpg",
+              "duration": "24m",
+              "description": "Klein Moretti discovers an ancient secret about his teacher, Azik Eggers.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-07/master.m3u8"
+            },
+             {
+              "episodeNumber": 7,
+               "title": "Coincidence",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 07.jpg",
+              "duration": "24m",
+              "description": "When too many coincidences appear, Klein Moretti discovers he may be caught in an elaborate scheme.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-07/master.m3u8"
+            },
+             {
+              "episodeNumber": 8,
+               "title": "Losing Control",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 08.jpg",
+              "duration": "24m",
+              "description": "Klein Moretti is on a mission, and the most dreaded fate that could happen to a Beyonder becomes reality.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-08/master.m3u8"
+            },
+             {
+              "episodeNumber": 9,
+               "title": "Party",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 09.jpg",
+              "duration": "24m",
+              "description": "Klein succeeds in ascending to Sequence 8, but this glorious moment is overshadowed by an event.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-09/master.m3u8"
+            },
+             {
+              "episodeNumber": 10,
+               "title": "Clue",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 10.jpg",
+              "duration": "24m",
+              "description": "Dunn and Klein investigate a congressman's murder that may have supernatural elements.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-10/master.m3u8"
+            },
+             {
+              "episodeNumber": 11,
+               "title": "Mastermind",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 11.jpg",
+              "duration": "24m",
+              "description": "Following Klein's suspicions, the Nighthawk investigates what Sharon Khoy is hiding.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-11/master.m3u8"
+            },
+             {
+              "episodeNumber": 12,
+               "title": "Bomb",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 12.jpg",
+              "duration": "24m",
+              "description": "Lanevus threatens to destroy Tingen, putting the Nighthawks in check.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-12/master.m3u8"
+            },
+             {
+              "episodeNumber": 13,
+               "title": "Light",
+              "thumbnail": "images/Episodes/Lord of Mysteries/season 01/episode 13.jpg",
+              "duration": "24m",
+              "description": "The Nighthawks defend Tingen from evil's descent, and past events are revealed to be more than coincidences.",
+              "watchLink": "demo-link.html?title=Frieren%3A%20Beyond%20Journey%27s%20End&season=1&episode=4",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "backblaze",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-13/master.m3u8"
+            }
+          ]
+        }
+      ],
+      "editorsPick": true
+    },
     {
       "id": "Lookism",
       "title": "Lookism",
@@ -5053,6 +5327,7 @@
             }
     
           ]
+
         }
       ],
       "editorsPick": true
@@ -5468,6 +5743,475 @@
       "editorsPick": false
     },
     {
+      "id": "naruto",
+      "title": "Naruto",
+      "category": "anime",
+      "poster": "images/posters/naruto.jpg",
+      "banner": "images/banners/narutoban.png",
+      "heroBanner": "images/banners/narutoban.png",
+      "detailBanner": "images/banners/narutoban.png",
+      "rating": 8.5,
+      "genres": [
+        "Fantasy",
+        "Adventure",
+        "Drama"
+      ],
+      "releaseYear": 2007,
+      "status": "Completed",
+      "studio": "Studio Pierrot",
+      "totalSeasons": 5,
+      "episodeCount": 220,
+      "popularity": 424,
+      "views": 2400000,
+      "favoritesCount": 3216,
+      "description": "Naruto Uzumaki, a mischievous adolescent ninja, struggles as he searches for recognition and dreams of becoming the Hokage, the village's leader and strongest ninja.",
+      "trailerYoutubeId": "",
+      "screenshots": [
+        "images/thumbnails/mushoku-tensei-shot-1.jpg",
+        "images/thumbnails/mushoku-tensei-shot-2.jpg",
+        "images/thumbnails/mushoku-tensei-shot-3.jpg"
+      ],
+      "characters": [
+        {
+          "name": "Hiro Ishida",
+          "role": "Antagonist",
+          "voiceActor": "Shun Yamashita",
+          "avatar": "images/thumbnails/hiro-ishida.png"
+        },
+        {
+          "name": "Asuka Kondo",
+          "role": "Antagonist",
+          "voiceActor": "Sumi Hara",
+          "avatar": "images/thumbnails/asuka-kondo.png"
+        },
+        {
+          "name": "Sora Arata",
+          "role": "Protagonist",
+          "voiceActor": "Daiki Hara",
+          "avatar": "images/thumbnails/sora-arata.png"
+        },
+        {
+          "name": "Kael Kuro",
+          "role": "Mentor",
+          "voiceActor": "Ryo Ogawa",
+          "avatar": "images/thumbnails/kael-kuro.png"
+        }
+      ],
+      "seasons": [
+        {
+          "seasonNumber": 1,
+          "episodes": [
+            {
+              "episodeNumber": 1,
+              "title": "Enter: Naruto Uzumaki!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 01.jpg",
+              "duration": "24m",
+              "description": "Naruto Uzumaki, a mischievous young ninja from the Hidden Leaf Village, dreams of becoming Hokage. After stealing a forbidden scroll, he discovers a powerful technique that changes his future.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=1",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-1/master.m3u8",
+            
+            "subtitles": [
+               
+  {
+    "lang": "en",
+    "label": "English",
+    "url": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-1/master.vtt"
+  },
+  {
+    "lang": "hi",
+    "label": "Hindi",
+    "url": "https://f005.backblazeb2.com/file/animeneurix/anime/Lord-of-Mysteries/Episode-01/subtitles/hindi.vtt"
+  }
+]
+            },
+            {
+              "episodeNumber": 2,
+              "title": "My Name is Konohamaru!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 02.jpg",
+              "duration": "24m",
+              "description": "Naruto meets Konohamaru, the grandson of the Third Hokage. Inspired by Naruto's confidence, Konohamaru hopes to surpass his grandfather and become Hokage himself.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=2",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-2/master.m3u8"
+            },
+            {
+              "episodeNumber": 3,
+              "title": "Sasuke and Sakura: Friends or Foes?",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 03.jpg",
+              "duration": "24m",
+              "description": "On the way to becoming a ninja, Naruto must team up with his classmates, the pretty Sakura and the pretty serious Sasuke, whose common bond is that they both hate Naruto. So Naruto will try a different approach.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-3/master.m3u8"
+            },
+            {
+              "episodeNumber": 4,
+              "title": "Pass or Fail: Survival Test",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 04.jpg",
+              "duration": "24m",
+              "description": "The recently formed Team 7 (Naruto, Sakura and Sasuke) meet their instructor, Hatake Kakashi, and begin training to see if they pass to the next stage of ninja training. Kakashi tells them to engage in the following exercise: try and take two bells away from him using their ninja knowledge.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-4/master.m3u8"
+            },
+            {
+              "episodeNumber": 5,
+              "title": "You Failed! Kakashi's Final Decision",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 05.jpg",
+              "duration": "24m",
+              "description": "With the threat of failure hanging over their heads, Naruto, Sasuke and Sakura try everything they know to pass the grueling survival test. But it will take some wise advice from Kakashi to teach these selfish ninja a thing or two about teamwork.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-5/master.m3u8"
+            },
+            {
+              "episodeNumber": 6,
+              "title": "A Dangerous Mission! Journey to the Land of Waves!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 06.jpg",
+              "duration": "24m",
+              "description": "After completing several simple assignments, Naruto requests a more challenging mission. Team 7 is tasked with protecting Tazuna, a bridge builder travelling to the Land of Waves.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-6/master.m3u8"
+            },
+            {
+              "episodeNumber": 7,
+              "title": "The Assassin of the Mist!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 07.jpg",
+              "duration": "24m",
+              "description": "Team 7 encounters the dangerous rogue ninja Zabuza Momochi. As the mission becomes deadly, Naruto faces his first real battle against a powerful enemy.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-7/master.m3u8"
+            },
+            {
+              "episodeNumber": 8,
+              "title": "The Oath of Pain",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 08.jpg",
+              "duration": "24m",
+              "description": "Kakashi becomes trapped in Zabuza's Water Prison Technique. Naruto and Sasuke must overcome their fear and devise a plan to rescue their teacher.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-8/master.m3u8"
+            },
+            {
+              "episodeNumber": 9,
+              "title": "Kakashi: Sharingan Warrior",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 09.jpg",
+              "duration": "24m",
+              "description": "Naruto and Sasuke work together to free Kakashi from Zabuza's trap. With his Sharingan revealed, Kakashi prepares to turn the battle around.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-,,,,,,9/master.m3u8"
+            },
+            {
+              "episodeNumber": 10,
+              "title": "The Forest of Chakra",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 10.jpg",
+              "duration": "24m",
+              "description": "Recovering from the encounter with Zabuza, Team 7 begins training to improve chakra control. Naruto and Sasuke compete to master the difficult exercise of climbing trees without using their hands.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-10/master.m3u8"
+            },
+            {
+              "episodeNumber": 11,
+              "title": "The Land Where a Hero Once Lived",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 11.jpg",
+              "duration": "24m",
+              "description": "Sakura learns how the people of the Land of Waves suffer under Gato's control. Meanwhile, Naruto and Sasuke continue their chakra training in preparation for another confrontation.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-11/master.m3u8"
+            },
+            {
+              "episodeNumber": 12,
+              "title": "Battle on the Bridge! Zabuza Returns!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 12.jpg",
+              "duration": "24m",
+              "description": "Naruto encounters a mysterious young person during training and reflects on the strength needed to protect loved ones. Meanwhile, Team 7 prepares for Zabuza's return.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-12/master.m3u8"
+            },
+            {
+              "episodeNumber": 13,
+              "title": "Haku's Secret Jutsu: Crystal Ice Mirrors",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 13.jpg",
+              "duration": "24m",
+              "description": "Zabuza returns to the battlefield with Haku, a mysterious masked ninja. Sasuke confronts Haku's extraordinary abilities as the fight intensifies on the bridge.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-13/master.m3u8"
+            },
+            {
+              "episodeNumber": 14,
+              "title": "The Number One Hyperactive, Knucklehead Ninja Joins the Fight!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 14.jpg",
+              "duration": "24m",
+              "description": " Naruto joins the battle when Sasuke faces Haku's Crystal Ice Mirrors. As the two young ninja fight together, Naruto's unpredictable actions complicate Sasuke's strategy.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-14/master.m3u8"
+            },
+            {
+              "episodeNumber": 15,
+              "title": "Zero Visibility: The Sharingan Shatters",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 15.jpg",
+              "duration": "24m",
+              "description": "Naruto and Sasuke struggle against Haku's seemingly impenetrable ice mirrors. Sasuke pushes his Sharingan to its limits as the battle takes a dangerous turn.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-15/master.m3u8"
+            },
+            {
+              "episodeNumber": 16,
+              "title": "The Broken Seal",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 16.jpg",
+              "duration": "24m",
+              "description": "With Sasuke apparently defeated, Naruto is overwhelmed by rage and desperation. The immense chakra of the Nine-Tailed Fox begins to emerge, revealing a frightening new side of his power.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-16/master.m3u8"
+            },
+            {
+              "episodeNumber": 17,
+              "title": "White Past: The Hidden Ambition",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 17.jpg",
+              "duration": "24m",
+              "description": " Haku's tragic childhood and the circumstances that brought him to Zabuza are revealed. Naruto begins to understand the person behind the mask and the painful choices that shaped his life.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-17/master.m3u8"
+            },
+
+            {
+              "episodeNumber": 18,
+              "title": "The Weapons Known as Shinobi",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 18.jpg",
+              "duration": "24m",
+              "description": "Naruto confronts Haku about what it means to be a ninja. Their clash explores loyalty, sacrifice, and the emotional cost of becoming a weapon for someone else.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-18/master.m3u8"
+            },
+            {
+              "episodeNumber": 19,
+              "title": "The Demon in the Snow",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 19.jpg",
+              "duration": "24m",
+              "description": "Naruto's words force Zabuza to confront his feelings about Haku. The battle reaches its emotional conclusion as Zabuza faces Gato and his men in a final act of vengeance.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-19/master.m3u8"
+            },
+            {
+              "episodeNumber": 20,
+              "title": "A New Chapter Begins: The Chunin Exam!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 20.jpg",
+              "duration": "24m",
+              "description": "After completing the mission in the Land of Waves, Team 7 returns to the Hidden Leaf Village. Kakashi recommends Naruto, Sasuke, and Sakura for the Chunin Exams, opening the door to a new challenge.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-20/master.m3u8"
+            },
+            {
+              "episodeNumber": 21,
+              "title": "Identify Yourself: Powerful New Rivals",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 21.jpg",
+              "duration": "24m",
+              "description": "Team 7 prepares for the Chunin Exams, but uncertainty and unexpected threats begin to surface. Naruto and his teammates must prove they are ready to face stronger ninja.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-21/master.m3u8"
+            },
+            {
+              "episodeNumber": 22,
+              "title": "Chunin Challenge: Rock Lee vs. Sasuke!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 22.jpg",
+              "duration": "24m",
+              "description": "Rock Lee challenges Sasuke to a fight and demonstrates remarkable hand-to-hand combat skills. Sasuke discovers that his new rival is far more formidable than he expected.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-22/master.m3u8"
+            },
+            {
+              "episodeNumber": 23,
+              "title": "Genin Takedown! All Nine Rookies Face Off!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 23.jpg",
+              "duration": "24m",
+              "description": "The rookie ninja gather for the Chunin Exams and encounter familiar classmates alongside new competitors. Rivalries develop as everyone prepares to prove their abilities.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-23/master.m3u8"
+            },
+            {
+              "episodeNumber": 24,
+              "title": "Start Your Engines: The Chunin Exam Begins!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 24.jpg",
+              "duration": "24m",
+              "description": "The first Chunin Exam begins with a difficult written test supervised by Ibiki Morino. The contestants face questions designed to test not only their knowledge but also their ability to gather information under pressure.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-24/master.m3u8"
+            },
+            {
+              "episodeNumber": 25,
+              "title": "The Tenth Question: All or Nothing!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 25.jpg",
+              "duration": "24m",
+              "description": "The genin face the final challenge of the written examination, where one decision could determine their future. Naruto's determination is put to the test as the contestants confront the consequences of failure.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-25/master.m3u8"
+            },
+            {
+              "episodeNumber": 26,
+              "title": "The Tenth Question: All or Nothing!",
+              "thumbnail": "images/thumbnails/Naruto/Season 01/Episode 26.jpg",
+              "duration": "24m",
+              "description": "This special recap revisits the events and characters introduced throughout the first 25 episodes. It also prepares viewers for the next stage of the Chunin Exams and the dangerous challenges ahead.",
+              "watchLink": "demo-link.html?title=Mushoku%20Tensei&season=1&episode=3",
+              "downloadLinks": {
+                "480p": "",
+                "720p": "",
+                "1080p": ""
+              },
+              "source": "hls",
+              "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/anime/Naruto/Season-1/Episode-26/master.m3u8"
+            }
+          ]
+        }
+      ],
+      "editorsPick": false
+    },
+    {
       "id": "your-name",
       "title": "Your Name",
       "category": "movie",
@@ -5814,6 +6558,7 @@
       "videoUrl": "https://f005.backblazeb2.com/file/animeneurix/All+Movies/Jujutsu+Kaisen+0.mkv",
       "editorsPick": false
     }
+   
   ],
   "genreMeta": {
     "Action": {

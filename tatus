@@ -1,0 +1,17 @@
+warning: in the working copy of 'data/anime-data.json', LF will be replaced by CRLF the next time Git touches it
+ data/anime-data.json     | 747 [32m++++++++++++++++++++++++++++++++++++++++++++++[m[31m-[m
+ images/banners/233.jpg   | Bin [31m63280[m -> [32m0[m bytes
+ images/banners/234.jpg   | Bin [31m64500[m -> [32m0[m bytes
+ images/banners/234r5.jpg | Bin [31m61359[m -> [32m0[m bytes
+ images/banners/3.jpg     | Bin [31m64024[m -> [32m0[m bytes
+ images/banners/32gf.jpg  | Bin [31m65588[m -> [32m0[m bytes
+ images/banners/345.jpg   | Bin [31m61051[m -> [32m0[m bytes
+ images/banners/356.jpg   | Bin [31m62618[m -> [32m0[m bytes
+ images/banners/36.jpg    | Bin [31m64594[m -> [32m0[m bytes
+ images/banners/45.jpg    | Bin [31m63108[m -> [32m0[m bytes
+ images/banners/5678.jpg  | Bin [31m91961[m -> [32m0[m bytes
+ js/custom-controls.js    |   1 [32m+[m
+ js/player-extras.js      |  10 [32m+[m[31m-[m
+ js/watch-loader.js       |  40 [32m++[m[31m-[m
+ watch.html               |   7 [32m+[m
+ 15 files changed, 800 insertions(+), 5 deletions(-)

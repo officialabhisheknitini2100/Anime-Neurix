@@ -258,6 +258,7 @@
      --------------------------------------------------------- */
   function isBusy() {
     return isScrubbingSeek || isScrubbingVolume ||
+      !!document.querySelector(".hp-menu.open") || // HLS quality/audio/subtitle menus (js/hls-player.js)
       (document.getElementById("pe-speed-menu") && document.getElementById("pe-speed-menu").classList.contains("open"));
   }
   function showControls(force) {
